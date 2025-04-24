@@ -14,20 +14,20 @@ class Feed
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $url = null;
+    private string $url;
 
     #[ORM\Column(length: 255)]
-    private ?string $type = null;
+    private string $type;
 
     #[ORM\Column(length: 255)]
-    private ?string $categorySlug = null;
+    private string $categorySlug;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUrl(): ?string
+    public function getUrl(): string
     {
         return $this->url;
     }
@@ -38,8 +38,7 @@ class Feed
 
         return $this;
     }
-
-    public function getType(): ?string
+    public function getType(): string
     {
         return $this->type;
     }
@@ -51,7 +50,7 @@ class Feed
         return $this;
     }
 
-    public function getCategorySlug(): ?string
+    public function getCategorySlug(): string
     {
         return $this->categorySlug;
     }

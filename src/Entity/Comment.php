@@ -15,16 +15,21 @@ class Comment
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $userName = null;
+    private string $userName ;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $content = null;
+    private string $content;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
-    private ?Article $article = null;
+    #[ORM\JoinColumn(nullable: false)]
+    private Article $article;
+
+    #[ORM\ManyToOne(inversedBy: 'comments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private User $user;
 
     public function getId(): ?int
     {
@@ -75,6 +80,18 @@ class Comment
     public function setArticle(?Article $article): static
     {
         $this->article = $article;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

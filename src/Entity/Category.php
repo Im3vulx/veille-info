@@ -16,18 +16,16 @@ class Category
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private string $name;
 
     #[ORM\Column(length: 255)]
-    private ?string $slug = null;
+    private string $slug;
 
     #[ORM\Column(length: 100)]
     private ?string $iconName = null;
 
-    /**
-     * @var Collection<int, Article>
-     */
     #[ORM\OneToMany(targetEntity: Article::class, mappedBy: 'category')]
+    #[ORM\JoinColumn(nullable: false)]
     private Collection $articles;
 
     public function __construct()

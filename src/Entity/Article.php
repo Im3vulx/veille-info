@@ -17,37 +17,38 @@ class Article
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $title = null;
+    private string $title;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $summary = null;
+    private string $summary;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $content = null;
+    private string $content;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageUrl = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    private \DateTimeImmutable $createdAt;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $updatedAt = null;
+    private \DateTimeImmutable $updatedAt;
 
     #[ORM\Column]
-    private ?bool $published = null;
+    private bool $published;
 
     #[ORM\Column(length: 255)]
-    private ?string $authorName = null;
+    private string $authorName;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
-    private ?Category $category = null;
+    #[ORM\JoinColumn(nullable: false)]
+    private Category $category;
 
-    /**
-     * @var Collection<int, Comment>
-     */
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'article')]
-    private Collection $comments;
+    private ?Collection $comments = null;
+
+    #[ORM\ManyToOne(inversedBy: 'articles')]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -193,6 +194,18 @@ class Article
                 $comment->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }
