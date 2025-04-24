@@ -1,0 +1,254 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Neurogameron - Accueil
+{% endblock %}
+
+{% block body %}
+	<section class="hero-banner">
+		<div class="container">
+			<div>
+				<h1>
+					Votre veille technologique personnalisée
+				</h1>
+				<p>
+					Découvrez les dernières actualités et tendances dans le domaine de la programmation, des jeux vidéo, de l'espace, du sport et plus encore.
+				</p>
+				<div>
+					<a href="{{ path('app_category') }}">
+						Explorer les catégories
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="featured-article">
+		<div class="container">
+			<div class="section-header">
+				<h2>
+					À la une
+				</h2>
+			</div>
+
+			<div class="featured-grid">
+				<div class="featured-highlight">
+					<a href="#" class="highlight">
+						<div>
+							<img src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg" alt="Article à la une" class="highlight-img"/>
+						</div>
+						<div class="highlight-overlay"></div>
+						<div class="highlight-content">
+							<span class="custom-badge">
+								Programmation
+							</span>
+							<h3 class="highlight-title">Les dernières avancées en intelligence artificielle</h3>
+							<p class="highlight-desc">Découvrez comment l'IA transforme notre quotidien et révolutionne les industries.</p>
+						</div>
+					</a>
+				</div>
+
+				<div>
+					<div class="info-box">
+						<h3 class="info-title">
+							Découvrez notre plateforme
+						</h3>
+						<p class="info-text">
+							Neurogameron est votre source d'informations pour rester à jour sur les dernières tendances programmations, l'innovation dans les jeux vidéo, les avancées spatiales, les performances sportives et plus encore.
+						</p>
+						<div>
+							<div class="info-point">
+								<div class="info-number">
+									1
+								</div>
+								<div>
+									<p class="custom-title">Articles curatés</p>
+									<p class="custom-subtitle">Articles sélectionnés par nos experts</p>
+								</div>
+							</div>
+							<div class="info-point">
+								<div class="info-number">
+									2
+								</div>
+								<div>
+									<p class="custom-title">Catégories diverses</p>
+									<p class="custom-subtitle">De multiples domaines couverts</p>
+								</div>
+							</div>
+							<div class="info-point">
+								<div class="info-number">
+									3
+								</div>
+								<div>
+									<p class="custom-title">Personnalisation</p>
+									<p class="custom-subtitle">Contenu adapté à vos intérêts</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="recent-articles">
+		<div class="container">
+			<div class="section-header">
+				<h2>Articles récents</h2>
+				<a href="#" class="link-colored">
+					Voir tous les articles
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M9 18l6-6-6-6"/>
+					</svg>
+				</a>
+			</div>
+
+			<div
+				class="articles-grid">
+				<!-- Article Card 1 -->
+				<div class="article-card">
+					<a href="#">
+						<img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg" alt="Article"/>
+						<div class="content">
+							<span>Technologie</span>
+							<h3>Les nouveautés de l'intelligence artificielle</h3>
+							<p>Découvrez les dernières avancées en matière d'IA et leur impact sur notre quotidien.</p>
+							<div class="date">
+								<span>12 juin 2023</span>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<!-- Article Card 2 -->
+				<div class="article-card">
+					<a href="#">
+						<img src="https://images.pexels.com/photos/39896/space-station-moon-landing-apollo-15-james-irwin-39896.jpeg" alt="Article"/>
+						<div class="content">
+							<span>Jeux Vidéo</span>
+							<h3>Les jeux les plus attendus de 2023</h3>
+							<p>Notre sélection des titres qui vont marquer l'année vidéoludique.</p>
+							<div class="date">
+								<span>8 juin 2023</span>
+							</div>
+						</div>
+					</a>
+				</div>
+
+				<!-- Article Card 3 -->
+				<div class="article-card">
+					<a href="#">
+						<img src="https://images.pexels.com/photos/945471/pexels-photo-945471.jpeg" alt="Article"/>
+						<div class="content">
+							<span>Espace</span>
+							<h3>Mission Mars : les dernières découvertes</h3>
+							<p>Les rovers martiens continuent de nous surprendre avec leurs découvertes.</p>
+							<div class="date">
+								<span>5 juin 2023</span>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="category-section">
+		<div class="container">
+			<div class="section-header">
+				<h2>Explorer par catégorie</h2>
+				<a href="{{ path('app_category') }}" class="link-colored">
+					Toutes les catégories
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M9 18l6-6-6-6"/>
+					</svg>
+				</a>
+			</div>
+
+			<div class="categories-grid">
+				<a href="#" class="category-tile">
+					<div>
+						<div class="category-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="16 18 22 12 16 6"></polyline>
+								<polyline points="8 6 2 12 8 18"></polyline>
+							</svg>
+						</div>
+						<h3>Programmation</h3>
+					</div>
+				</a>
+
+				<a href="#" class="category-tile">
+					<div>
+						<div class="category-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"></path>
+								<path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"></path>
+							</svg>
+						</div>
+						<h3>Jeux Vidéo</h3>
+					</div>
+				</a>
+
+				<a href="#" class="category-tile">
+					<div>
+						<div class="category-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
+								<path d="M9 18h6"></path>
+								<path d="M10 22h4"></path>
+							</svg>
+						</div>
+						<h3>Science</h3>
+					</div>
+				</a>
+
+				<a href="#" class="category-tile">
+					<div>
+						<div class="category-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M22 8a10 10 0 0 0-20 0"></path>
+								<path d="M2 8h20"></path>
+								<path d="M12 9v13"></path>
+								<path d="M9 13l3 3 3-3"></path>
+							</svg>
+						</div>
+						<h3>Espace</h3>
+					</div>
+				</a>
+
+				<a href="#" class="category-tile">
+					<div>
+						<div class="category-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<circle cx="12" cy="12" r="10"></circle>
+								<path d="M12 16v-4"></path>
+								<path d="M12 8h.01"></path>
+							</svg>
+						</div>
+						<h3>Sport</h3>
+					</div>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="newsletter">
+		<div class="newsletter-container">
+			<h2 class="newsletter-title">Restez informé</h2>
+			<p class="newsletter-description">
+				Abonnez-vous à notre newsletter pour recevoir les derniers articles et mises à jour directement dans votre boîte mail.
+			</p>
+			<form class="newsletter-form">
+				<div class="newsletter-fields">
+					<input type="email" placeholder="Votre adresse email" required/>
+					<button type="submit">S'abonner</button>
+				</div>
+				<p class="newsletter-note">
+					Nous respectons votre vie privée. Désabonnez-vous à tout moment.
+				</p>
+			</form>
+		</div>
+	</section>
+
+	{% include 'footer.html.twig' %}
+{% endblock %}
