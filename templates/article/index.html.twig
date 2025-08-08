@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles - Neurogameron
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="page-header">
+			<h1>Articles</h1>
+			<p class="page-description">Découvrez nos derniers articles sur la veille technologique</p>
+		</div>
+
+		{% if articles is empty %}
+			<div class="empty-state">
+				<div class="empty-icon">
+					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewbox="0 0 16 16">
+						<path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+						<path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+					</svg>
+				</div>
+				<h3>Aucun article disponible</h3>
+				<p>Il n'y a pas encore d'articles publiés. Revenez bientôt !</p>
+			</div>
+		{% else %}
+			<div class="articles-grid">
+				{% for article in articles %}
+					<article class="article-card">
+						{% if article.imageUrl %}
+							<div class="article-image">
+								<img src="{{ article.imageUrl }}" alt="{{ article.title }}" loading="lazy">
+							</div>
+						{% endif %}
+
+						<div class="article-content">
+							<div class="article-meta">
+								<span class="article-category">{{ article.category.name }}</span>
+								<span class="article-date">{{ article.createdAt|date('d/m/Y') }}</span>
+							</div>
+
+							<h2 class="article-title">
+								<a href="{{ path('app_article_show', {id: article.id}) }}">{{ article.title }}</a>
+							</h2>
+
+							<p class="article-summary">{{ article.summary|length > 150 ? article.summary|slice(0, 150) ~ '...' : article.summary }}</p>
+
+							<div class="article-footer">
+								<span class="article-author">Par
+									{{ article.authorName }}</span>
+								<a href="{{ path('app_article_show', {id: article.id}) }}" class="read-more">
+									Lire la suite
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16">
+										<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+									</svg>
+								</a>
+							</div>
+						</div>
+					</article>
+				{% endfor %}
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

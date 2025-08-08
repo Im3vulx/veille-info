@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ article.title }}
+	- Neurogameron
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<article class="article-detail">
+			<header class="article-header">
+				<nav class="breadcrumb">
+					<a href="{{ path('app_home') }}">Accueil</a>
+					<span class="separator">/</span>
+					<a href="{{ path('app_articles') }}">Articles</a>
+					<span class="separator">/</span>
+					<span class="current">{{ article.title|length > 30 ? article.title|slice(0, 30) ~ '...' : article.title }}</span>
+				</nav>
+
+				<div class="article-meta">
+					<span class="article-category">{{ article.category.name }}</span>
+					<span class="article-date">{{ article.createdAt|date('d/m/Y à H:i') }}</span>
+				</div>
+
+				<h1 class="article-title">{{ article.title }}</h1>
+
+				<div class="article-author">
+					<span>Par
+						{{ article.authorName }}</span>
+				</div>
+			</header>
+
+			{% if article.imageUrl %}
+				<div class="article-hero-image">
+					<img src="{{ article.imageUrl }}" alt="{{ article.title }}" loading="lazy">
+				</div>
+			{% endif %}
+
+			<div class="article-content">
+				<div class="article-summary">
+					<p class="summary-text">{{ article.summary }}</p>
+				</div>
+
+				<div class="article-body">
+					{{ article.content|raw }}
+				</div>
+			</div>
+
+			<footer class="article-footer">
+				<div class="article-actions">
+					<button class="action-button" title="Partager">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16">
+							<path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+							<path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+						</svg>
+						Partager
+					</button>
+
+					<button class="action-button" title="Marquer comme lu">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16">
+							<path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+							<path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+						</svg>
+						Marquer comme lu
+					</button>
+				</div>
+
+				<div class="article-navigation">
+					<a href="{{ path('app_articles') }}" class="back-link">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16">
+							<path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+						</svg>
+						Retour aux articles
+					</a>
+				</div>
+			</footer>
+		</article>
+	</div>
+{% endblock %}
