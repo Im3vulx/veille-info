@@ -1,41 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Articles - Neurogameron
+{% block title %}
+	{{ category.name }}
+	- Neurogameron
 {% endblock %}
 
 {% block body %}
 	<div class="container">
 		<div class="page-header">
-			<h1>Articles</h1>
-			<p class="page-description">Découvrez nos derniers articles sur la veille technologique</p>
+			<h1>{{ category.name }}</h1>
+			<p class="page-description">Découvrez tous nos articles dans la catégorie
+				{{ category.name }}</p>
 		</div>
 
-		<div class="filter-section">
-			<form method="GET" action="{{ path('app_articles') }}" class="filter-form">
-				<div class="filter-group">
-					<label for="categoryFilter" class="filter-label">Filtrer par catégorie :</label>
-					<select name="category" id="categoryFilter" class="filter-select" onchange="this.form.submit()">
-						<option value="">Toutes les catégories</option>
-						{% for category in categories %}
-							<option value="{{ category.id }}" {% if selectedCategory == (category.id ~ '') %} selected {% endif %}>
-								{{ category.name }}
-							</option>
-						{% endfor %}
-					</select>
+
+		{% if children is defined and children|length > 0 %}
+			<div class="subcategory-list">
+				<h2>Sous-catégories</h2>
+				<div class="filter-section">
+					<form method="GET" action="{{ path('app_category_show', {id: category.id}) }}" class="filter-form">
+						<div class="filter-group">
+							<label for="categoryFilter" class="filter-label">Filtrer par catégorie :</label>
+							<select name="category" id="categoryFilter" class="filter-select" onchange="this.form.submit()">
+								<option value="">Toutes les catégories</option>
+								{% for child in children %}
+									<option value="{{ child.id }}" {% if selectedCategory == (child.id ~ '') %} selected {% endif %}>
+										{{ child.name }}
+									</option>
+								{% endfor %}
+							</select>
+						</div>
+					</form>
 				</div>
-			</form>
-		</div>
+			</div>
+		{% endif %}
 
 		{% if articles is empty %}
 			<div class="empty-state">
 				<div class="empty-icon">
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewbox="0 0 16 16">
-						<path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-						<path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+						<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+						<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
 					</svg>
 				</div>
 				<h3>Aucun article disponible</h3>
-				<p>Il n'y a pas encore d'articles publiés. Revenez bientôt !</p>
+				<p>Il n'y a pas encore d'articles publiés dans cette catégorie. Revenez bientôt !</p>
 			</div>
 		{% else %}
 			<div class="articles-grid">
@@ -74,5 +83,14 @@
 				{% endfor %}
 			</div>
 		{% endif %}
+
+		<div class="category-navigation">
+			<a href="{{ path('app_category') }}" class="back-link">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16">
+					<path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H14.5A.5.5 0 0 0 15 8z"/>
+				</svg>
+				Retour aux catégories
+			</a>
+		</div>
 	</div>
 {% endblock %}

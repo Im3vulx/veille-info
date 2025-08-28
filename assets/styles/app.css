@@ -6,7 +6,6 @@
     padding: 0
 }
 
-/* styles.css */
 body {
     margin: 0;
     font-family: sans-serif;
@@ -125,11 +124,8 @@ body {
     background-color: #f9fafb;
 }
 
-/* Hero banner */
-
 .hero-banner {
     background: linear-gradient(to right, #1e3a8a, #1c1917);
-    /* remplacer selon palette */
     color: white;
     padding: 4rem 1rem;
     text-align: center;
@@ -172,8 +168,6 @@ body {
 .hero-banner .container a:hover {
     background-color: #2563eb;
 }
-
-/* Featured Article */
 
 .featured-article {
     padding: 3rem 1rem;
@@ -324,6 +318,7 @@ body {
 
 .article-card:hover {
     transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .article-card img {
@@ -344,7 +339,6 @@ body {
 .article-card span {
     font-size: 0.75rem;
     font-weight: 500;
-    color: #60a5fa;
 }
 
 .article-card h3 {
@@ -416,6 +410,9 @@ body {
     background-color: #e0f2fe;
     color: #2563eb;
     margin-bottom: 1rem;
+    svg {
+        fill: #2563eb;
+    }
 }
 
 .newsletter {
@@ -432,7 +429,6 @@ body {
 
 .newsletter-title {
     font-size: 1.875rem;
-    /* text-3xl */
     font-family: serif;
     font-weight: bold;
     margin-bottom: 1rem;
@@ -440,7 +436,6 @@ body {
 
 .newsletter-description {
     color: #dbeafe;
-    /* text-primary-100 */
     max-width: 36rem;
     margin: 0 auto 2rem;
 }
@@ -491,8 +486,6 @@ body {
     color: #c7d2fe;
     margin-top: 1rem;
 }
-
-/* Added styles to replace Tailwind utility classes */
 
 .link-colored:hover {
     color: #2563eb;
@@ -702,11 +695,15 @@ footer .newsletter-form p {
     display: flex;
     align-items: center;
     gap: 20px;
+    text-decoration: none;
 }
 
 .category-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #3b82f6;
+    color: #fff;
+    text-decoration: none;
 }
 
 .category-card .icon {
@@ -826,7 +823,6 @@ footer .newsletter-form p {
     background-color: #0056b3;
 }
 
-/* Styles pour les articles */
 .page-header {
     padding: 3rem 0 2rem;
     text-align: center;
@@ -862,27 +858,6 @@ footer .newsletter-form p {
     font-size: 1.25rem;
     color: #fff;
     margin-bottom: 0.5rem;
-}
-
-/* Grille des articles */
-.articles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.article-card {
-    background-color: #1e2939;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.article-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .article-image {
@@ -943,22 +918,25 @@ footer .newsletter-form p {
     color: #3b82f6;
 }
 
-.article-summary {
-    color: #9ca3af;
-    font-size: 0.875rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
 .article-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-top: 1px solid #374151;
+    padding-top: 2rem;
 }
 
 .article-author {
     color: #9ca3af;
-    font-size: 0.875rem;
+    font-size: 1rem;
+}
+
+.article-summary {
+    background-color: #1e2939;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid #3b82f6;
 }
 
 .read-more {
@@ -976,7 +954,6 @@ footer .newsletter-form p {
     color: #2563eb;
 }
 
-/* Page de détail d'article */
 .article-detail {
     max-width: 800px;
     margin: 0 auto;
@@ -1024,11 +1001,6 @@ footer .newsletter-form p {
     margin-bottom: 1rem;
 }
 
-.article-author {
-    color: #9ca3af;
-    font-size: 1rem;
-}
-
 .article-hero-image {
     margin-bottom: 2rem;
     border-radius: 0.75rem;
@@ -1039,18 +1011,6 @@ footer .newsletter-form p {
     width: 100%;
     height: 400px;
     object-fit: cover;
-}
-
-.article-content {
-    margin-bottom: 3rem;
-}
-
-.article-summary {
-    background-color: #1e2939;
-    padding: 1.5rem;
-    border-radius: 0.75rem;
-    margin-bottom: 2rem;
-    border-left: 4px solid #3b82f6;
 }
 
 .summary-text {
@@ -1118,11 +1078,6 @@ footer .newsletter-form p {
     color: #e5e7eb;
 }
 
-.article-footer {
-    border-top: 1px solid #374151;
-    padding-top: 2rem;
-}
-
 .article-actions {
     display: flex;
     gap: 1rem;
@@ -1166,7 +1121,18 @@ footer .newsletter-form p {
     color: #2563eb;
 }
 
-/* Responsive */
+.category-navigation {
+    margin-top: 3rem;
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #374151;
+}
+
+.subcategory-list h2 {
+    color:#fff;
+    margin-bottom: 20px;
+}
+
 @media (max-width: 768px) {
     .page-header h1 {
         font-size: 2rem;
@@ -1194,7 +1160,6 @@ footer .newsletter-form p {
     }
 }
 
-/* Styles pour le sélecteur de catégorie sur la page d'accueil */
 .category-selector {
     display: flex;
     align-items: center;
@@ -1255,19 +1220,6 @@ footer .newsletter-form p {
     margin: 0 auto;
 }
 
-/* Animation pour l'apparition des articles */
-.articles-grid {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.articles-grid.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Responsive pour le sélecteur de catégorie */
 @media (max-width: 768px) {
     .section-header {
         flex-direction: column;
@@ -1282,5 +1234,70 @@ footer .newsletter-form p {
     .link-colored {
         order: 3;
         text-align: center;
+    }
+}
+
+.filter-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #1e2939;
+    border-radius: 0.75rem;
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.filter-label {
+    color: #e5e7eb;
+    font-size: 0.875rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.filter-select {
+    padding: 0.5rem 1rem;
+    border: 1px solid #374151;
+    border-radius: 0.5rem;
+    background-color: #101828;
+    color: #e5e7eb;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    min-width: 200px;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+.filter-select option {
+    background-color: #101828;
+    color: #e5e7eb;
+}
+
+@media (max-width: 768px) {
+    .filter-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-select {
+        min-width: auto;
     }
 }

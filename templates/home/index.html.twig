@@ -4,6 +4,14 @@
 {% endblock %}
 
 {% block body %}
+	{% set icons = {
+		'brain' : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 640"><path d="M184 120C184 89.1 209.1 64 240 64L264 64C281.7 64 296 78.3 296 96L296 544C296 561.7 281.7 576 264 576L232 576C202.2 576 177.1 555.6 170 528C169.3 528 168.7 528 168 528C123.8 528 88 492.2 88 448C88 430 94 413.4 104 400C84.6 385.4 72 362.2 72 336C72 305.1 89.6 278.2 115.2 264.9C108.1 252.9 104 238.9 104 224C104 179.8 139.8 144 184 144L184 120zM456 120L456 144C500.2 144 536 179.8 536 224C536 239 531.9 253 524.8 264.9C550.5 278.2 568 305 568 336C568 362.2 555.4 385.4 536 400C546 413.4 552 430 552 448C552 492.2 516.2 528 472 528C471.3 528 470.7 528 470 528C462.9 555.6 437.8 576 408 576L376 576C358.3 576 344 561.7 344 544L344 96C344 78.3 358.3 64 376 64L400 64C430.9 64 456 89.1 456 120z"/></svg>',
+		'handball': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 640"><path d="M296.4 65.1C174.2 76.5 76.9 173.8 65.5 296C81.7 295.9 97.5 294.2 112.7 291C125.7 288.3 138.4 296.5 141.1 309.5C143.8 322.5 135.6 335.2 122.6 337.9C104.2 341.8 85 343.9 65.5 344C76.9 466.2 174.2 563.5 296.4 574.9C296.5 555.4 298.6 536.2 302.5 517.8C305.2 504.8 318 496.5 330.9 499.3C343.8 502.1 352.2 514.8 349.4 527.7C346.2 542.9 344.5 558.7 344.4 574.9C466.6 563.5 563.9 466.2 575.3 344C559.1 344.1 543.3 345.8 528.1 349C515.1 351.7 502.4 343.5 499.7 330.5C497 317.5 505.2 304.8 518.2 302.1C536.6 298.2 555.8 296.1 575.3 296C563.9 173.8 466.6 76.5 344.4 65.1C344.3 84.6 342.2 103.8 338.3 122.2C335.6 135.2 322.8 143.5 309.9 140.7C297 137.9 288.6 125.2 291.4 112.3C294.6 97.1 296.3 81.3 296.4 65.1zM299.2 216.5C277.8 249.4 249.7 277.4 216.9 298.8C205.8 306 190.9 302.9 183.7 291.8C176.5 280.7 179.6 265.8 190.7 258.6C217.9 240.9 241.2 217.6 259 190.3C266.2 179.2 281.1 176 292.2 183.3C303.3 190.6 306.5 205.4 299.2 216.5zM457.1 348.2C464.3 359.3 461.2 374.2 450.1 381.4C422.9 399.1 399.6 422.4 381.8 449.7C374.6 460.8 359.7 464 348.6 456.7C337.5 449.4 334.3 434.6 341.6 423.5C363 390.6 391.1 362.6 423.9 341.2C435 334 449.9 337.1 457.1 348.2z"/></svg>',
+		'espace': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 640"><path d="M192 384L88.5 384C63.6 384 48.3 356.9 61.1 335.5L114 247.3C122.7 232.8 138.3 224 155.2 224L250.2 224C326.3 95.1 439.8 88.6 515.7 99.7C528.5 101.6 538.5 111.6 540.3 124.3C551.4 200.2 544.9 313.7 416 389.8L416 484.8C416 501.7 407.2 517.3 392.7 526L304.5 578.9C283.2 591.7 256 576.3 256 551.5L256 448C256 412.7 227.3 384 192 384L191.9 384zM464 224C464 197.5 442.5 176 416 176C389.5 176 368 197.5 368 224C368 250.5 389.5 272 416 272C442.5 272 464 250.5 464 224z"/></svg>',
+		'jeux video': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 640"><path d="M448 128C554 128 640 214 640 320C640 426 554 512 448 512L192 512C86 512 0 426 0 320C0 214 86 128 192 128L448 128zM192 240C178.7 240 168 250.7 168 264L168 296L136 296C122.7 296 112 306.7 112 320C112 333.3 122.7 344 136 344L168 344L168 376C168 389.3 178.7 400 192 400C205.3 400 216 389.3 216 376L216 344L248 344C261.3 344 272 333.3 272 320C272 306.7 261.3 296 248 296L216 296L216 264C216 250.7 205.3 240 192 240zM432 336C414.3 336 400 350.3 400 368C400 385.7 414.3 400 432 400C449.7 400 464 385.7 464 368C464 350.3 449.7 336 432 336zM496 240C478.3 240 464 254.3 464 272C464 289.7 478.3 304 496 304C513.7 304 528 289.7 528 272C528 254.3 513.7 240 496 240z"/></svg>',
+		'code': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 640 640"><path d="M392.8 65.2C375.8 60.3 358.1 70.2 353.2 87.2L225.2 535.2C220.3 552.2 230.2 569.9 247.2 574.8C264.2 579.7 281.9 569.8 286.8 552.8L414.8 104.8C419.7 87.8 409.8 70.1 392.8 65.2zM457.4 201.3C444.9 213.8 444.9 234.1 457.4 246.6L530.8 320L457.4 393.4C444.9 405.9 444.9 426.2 457.4 438.7C469.9 451.2 490.2 451.2 502.7 438.7L598.7 342.7C611.2 330.2 611.2 309.9 598.7 297.4L502.7 201.4C490.2 188.9 469.9 188.9 457.4 201.4zM182.7 201.3C170.2 188.8 149.9 188.8 137.4 201.3L41.4 297.3C28.9 309.8 28.9 330.1 41.4 342.6L137.4 438.6C149.9 451.1 170.2 451.1 182.7 438.6C195.2 426.1 195.2 405.8 182.7 393.3L109.3 320L182.6 246.6C195.1 234.1 195.1 213.8 182.6 201.3z"/></svg>'
+	} %}
+
 	<section class="hero-banner">
 		<div class="container">
 			<div>
@@ -94,7 +102,7 @@
 		<div class="container">
 			<div class="section-header">
 				<h2>Articles récents</h2>
-				<a href="#" class="link-colored">
+				<a href="{{ path('app_articles') }}" class="link-colored">
 					Voir tous les articles
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<path d="M9 18l6-6-6-6"/>
@@ -102,52 +110,53 @@
 				</a>
 			</div>
 
-			<div
-				class="articles-grid">
-				<!-- Article Card 1 -->
-				<div class="article-card">
-					<a href="#">
-						<img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg" alt="Article"/>
-						<div class="content">
-							<span>Technologie</span>
-							<h3>Les nouveautés de l'intelligence artificielle</h3>
-							<p>Découvrez les dernières avancées en matière d'IA et leur impact sur notre quotidien.</p>
-							<div class="date">
-								<span>12 juin 2023</span>
-							</div>
+			<div class="articles-grid">
+				{% if latestArticles is empty %}
+					<div class="empty-state">
+						<div class="empty-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" viewbox="0 0 16 16">
+								<path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+								<path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+							</svg>
 						</div>
-					</a>
-				</div>
+						<h3>Aucun article disponible</h3>
+						<p>Il n'y a pas encore d'articles publiés. Revenez bientôt !</p>
+					</div>
+				{% else %}
+					{% for article in latestArticles %}
+						<article class="article-card">
+							{% if article.imageUrl %}
+								<div class="article-image">
+									<img src="{{ article.imageUrl }}" alt="{{ article.title }}" loading="lazy">
+								</div>
+							{% endif %}
 
-				<!-- Article Card 2 -->
-				<div class="article-card">
-					<a href="#">
-						<img src="https://images.pexels.com/photos/39896/space-station-moon-landing-apollo-15-james-irwin-39896.jpeg" alt="Article"/>
-						<div class="content">
-							<span>Jeux Vidéo</span>
-							<h3>Les jeux les plus attendus de 2023</h3>
-							<p>Notre sélection des titres qui vont marquer l'année vidéoludique.</p>
-							<div class="date">
-								<span>8 juin 2023</span>
-							</div>
-						</div>
-					</a>
-				</div>
+							<div class="article-content">
+								<div class="article-meta">
+									<span class="article-category">{{ article.category.name }}</span>
+									<span class="article-date">{{ article.createdAt|date('d/m/Y') }}</span>
+								</div>
 
-				<!-- Article Card 3 -->
-				<div class="article-card">
-					<a href="#">
-						<img src="https://images.pexels.com/photos/945471/pexels-photo-945471.jpeg" alt="Article"/>
-						<div class="content">
-							<span>Espace</span>
-							<h3>Mission Mars : les dernières découvertes</h3>
-							<p>Les rovers martiens continuent de nous surprendre avec leurs découvertes.</p>
-							<div class="date">
-								<span>5 juin 2023</span>
+								<h2 class="article-title">
+									<a href="{{ path('app_article_show', {id: article.id}) }}">{{ article.title }}</a>
+								</h2>
+
+								<p class="article-summary">{{ article.summary|length > 150 ? article.summary|slice(0, 150) ~ '...' : article.summary }}</p>
+
+								<div class="article-footer">
+									<span class="article-author">Par
+										{{ article.authorName }}</span>
+									<a href="{{ path('app_article_show', {id: article.id}) }}" class="read-more">
+										Lire la suite
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16">
+											<path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+										</svg>
+									</a>
+								</div>
 							</div>
-						</div>
-					</a>
-				</div>
+						</article>
+					{% endfor %}
+				{% endif %}
 			</div>
 		</div>
 	</section>
@@ -165,69 +174,16 @@
 			</div>
 
 			<div class="categories-grid">
-				<a href="#" class="category-tile">
-					<div>
-						<div class="category-icon">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<polyline points="16 18 22 12 16 6"></polyline>
-								<polyline points="8 6 2 12 8 18"></polyline>
-							</svg>
+				{% for category in categories %}
+					<a href="{{ path('app_category_show', {id: category.id}) }}" class="category-tile">
+						<div>
+							<div class="category-icon">
+								{{ icons[category.iconName]|default('<svg xmlns="http://www.w3.org/2000/svg" ...>...</svg>')|raw }}
+							</div>
+							<h3>{{ category.name }}</h3>
 						</div>
-						<h3>Programmation</h3>
-					</div>
-				</a>
-
-				<a href="#" class="category-tile">
-					<div>
-						<div class="category-icon">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"></path>
-								<path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"></path>
-							</svg>
-						</div>
-						<h3>Jeux Vidéo</h3>
-					</div>
-				</a>
-
-				<a href="#" class="category-tile">
-					<div>
-						<div class="category-icon">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/>
-								<path d="M9 18h6"></path>
-								<path d="M10 22h4"></path>
-							</svg>
-						</div>
-						<h3>Science</h3>
-					</div>
-				</a>
-
-				<a href="#" class="category-tile">
-					<div>
-						<div class="category-icon">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M22 8a10 10 0 0 0-20 0"></path>
-								<path d="M2 8h20"></path>
-								<path d="M12 9v13"></path>
-								<path d="M9 13l3 3 3-3"></path>
-							</svg>
-						</div>
-						<h3>Espace</h3>
-					</div>
-				</a>
-
-				<a href="#" class="category-tile">
-					<div>
-						<div class="category-icon">
-							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<circle cx="12" cy="12" r="10"></circle>
-								<path d="M12 16v-4"></path>
-								<path d="M12 8h.01"></path>
-							</svg>
-						</div>
-						<h3>Sport</h3>
-					</div>
-				</a>
+					</a>
+				{% endfor %}
 			</div>
 		</div>
 	</section>

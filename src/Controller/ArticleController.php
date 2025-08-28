@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -12,15 +14,25 @@ use Symfony\Component\Routing\Attribute\Route;
 final class ArticleController extends AbstractController
 {
     #[Route('/', name: 'app_articles')]
-    public function index(ArticleRepository $articleRepository): Response
+    public function index(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, Request $request): Response
     {
-        $articles = $articleRepository->findBy(
-            ['published' => true],
-            ['createdAt' => 'DESC']
-        );
+        $categories = $categoryRepository->findChildren();
+        $selectedCategory = $request->query->get('category');
+
+        if ($selectedCategory) {
+            $category = $categoryRepository->find($selectedCategory);
+            $articles = $articleRepository->findBy(
+                ['category' => $category, 'published' => true],
+                ['createdAt' => 'DESC']
+            );
+        } else {
+            $articles = $articleRepository->findBy(['published' => true], ['createdAt' => 'DESC']);
+        }
 
         return $this->render('article/index.html.twig', [
             'articles' => $articles,
+            'categories' => $categories,
+            'selectedCategory' => $selectedCategory,
         ]);
     }
 

@@ -9,14 +9,6 @@
 	<div class="container">
 		<article class="article-detail">
 			<header class="article-header">
-				<nav class="breadcrumb">
-					<a href="{{ path('app_home') }}">Accueil</a>
-					<span class="separator">/</span>
-					<a href="{{ path('app_articles') }}">Articles</a>
-					<span class="separator">/</span>
-					<span class="current">{{ article.title|length > 30 ? article.title|slice(0, 30) ~ '...' : article.title }}</span>
-				</nav>
-
 				<div class="article-meta">
 					<span class="article-category">{{ article.category.name }}</span>
 					<span class="article-date">{{ article.createdAt|date('d/m/Y à H:i') }}</span>
