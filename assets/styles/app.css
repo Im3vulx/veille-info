@@ -409,10 +409,10 @@ body {
     background-color: #e0f2fe;
     color: #2563eb;
     margin-bottom: 1rem;
+}
 
-    svg {
-        fill: #2563eb
-    }
+.category-icon svg {
+    fill: #2563eb
 }
 
 .newsletter {
@@ -1389,10 +1389,10 @@ section#contact .info .email .icon {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 9999px;
+}
 
-    svg {
-        fill: #818CF8
-    }
+section#contact .info .email .icon svg {
+    fill: #818cf8
 }
 
 section#contact .info .phone .icon {
@@ -1403,10 +1403,10 @@ section#contact .info .phone .icon {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 9999px;
+}
 
-    svg {
-        fill: #C084FC
-    }
+section#contact .info .phone .icon svg {
+    fill: #C084FC
 }
 
 section#contact .info .adresse .icon {
@@ -1417,10 +1417,10 @@ section#contact .info .adresse .icon {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 9999px;
+}
 
-    svg {
-        fill: #2DD4BF
-    }
+section#contact .info .adresse .icon svg {
+    fill: #2DD4BF
 }
 
 section#contact .info .question {
@@ -1436,10 +1436,10 @@ section#contact .info .question .ask {
     background-color: #1f2937;
     padding: 16px;
     border-radius: 6px;
+}
 
-    svg {
-        fill: #2563eb
-    }
+section#contact .info .question .ask svg {
+    fill: #2563eb
 }
 
 section#contact .info .question .ask .text h4 {
@@ -1467,14 +1467,15 @@ section#mission .left p {
 
 section#mission .right {
     width: 100%;
-
-    img {
-        width: 100%;
-    }
-
     border-radius: 6px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     object-fit: cover
+}
+
+section#mission .right img {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px
 }
 
 section#mission {
@@ -1498,6 +1499,104 @@ section#mission .left .mission-icons .passion {
     align-items: center;
     gap: 10px;
     color: #fff
+}
+
+section#valeur {
+    background-color: #1e2939;
+    padding: 3rem 1rem;
+    margin: 20px 0;
+    color: #fff;
+    text-align: center;
+}
+
+section#valeur .valeur-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2rem
+}
+
+section#valeur .valeur-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+}
+
+section#valeur .valeur-grid p {
+    margin-top: 10px;
+    line-height: 1.5rem;
+}
+
+section#valeur h2{
+    margin-bottom: 10px;
+}
+
+section#valeur .valeur-icon.icon-community {
+    background-color: #312E81;
+}
+
+section#valeur .valeur-icon.icon-precision {
+    background-color: #581C87;
+}
+
+section#valeur .valeur-icon.icon-excellence {
+    background-color: #134E4A;
+}
+
+section#valeur .valeur-icon.icon-passion {
+    background-color: #14532D;
+}
+
+section#team {
+    padding: 3rem 1rem;
+    margin: 20px 0;
+    color: #fff;
+    text-align: center;
+}
+
+section#team .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem
+}
+
+section#team .team-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 9999px;
+    margin-bottom: 1rem;
+}
+
+section#team .team-grid p {
+    margin-top: 10px;
+    line-height: 1.5rem;
+}
+
+section#team .team-grid h4 {
+    margin-top: 10px;
+    font-weight: 600;
+    color: #818CF8
+}
+
+section#team h2{
+    margin-bottom: 10px;
+}
+
+section#team .team-icon.letter-lh {
+    background-color: #312E81;
+}
+
+section#team .team-icon h3 {
+    color: #818CF8;
+    font-size: 1.5rem;
 }
 
 @media (max-width: 768px) {
