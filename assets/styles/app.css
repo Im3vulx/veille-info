@@ -9,7 +9,7 @@
 body {
     margin: 0;
     font-family: sans-serif;
-    background-color: #101828;
+    background-color: #101828
 }
 
 .navbar {
@@ -17,7 +17,7 @@ body {
     top: 0;
     background-color: #1e2939;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    z-index: 50;
+    z-index: 50
 }
 
 .navbar .container {
@@ -27,60 +27,60 @@ body {
     height: 64px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center
 }
 
 .logo {
     font-family: serif;
     font-size: 1.25rem;
-    font-weight: bold;
+    font-weight: 700;
     color: #8194f8;
-    text-decoration: none;
+    text-decoration: none
 }
 
 .nav-center {
     display: flex;
     gap: 1rem;
-    align-items: center;
+    align-items: center
 }
 
 .nav-link {
     color: #fff;
     text-decoration: none;
-    font-size: 0.875rem;
-    padding: 0.5rem;
+    font-size: .875rem;
+    padding: .5rem
 }
 
 .nav-link:hover {
-    color: #2563eb;
+    color: #2563eb
 }
 
 .register-button {
     background-color: #3b82f6;
     color: #fff;
-    padding: 0.5rem 1rem;
+    padding: .5rem 1rem;
     text-decoration: none;
     border-radius: 6px;
-    font-size: 0.875rem;
+    font-size: .875rem
 }
 
 .register-button:hover {
-    background-color: #2563eb;
+    background-color: #2563eb
 }
 
 .icon-button {
     background: none;
     border: none;
     font-size: 1.2rem;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .icon-button svg {
-    fill: #fff;
+    fill: #fff
 }
 
 .user-dropdown {
-    position: relative;
+    position: relative
 }
 
 .user-button {
@@ -88,129 +88,128 @@ body {
     border: none;
     border-radius: 9999px;
     padding: 8px 12px;
-    font-size: 0.875rem;
-    cursor: pointer;
+    font-size: .875rem;
+    cursor: pointer
 }
 
 .dropdown-menu {
     position: absolute;
     right: 0;
     top: 120%;
-    background-color: white;
+    background-color: #fff;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 6px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: none;
-    /* à activer dynamiquement */
     flex-direction: column;
-    width: 200px;
+    width: 200px
 }
 
 .user-dropdown:hover .dropdown-menu {
-    display: flex;
+    display: flex
 }
 
 .dropdown-link {
     padding: 10px 16px;
-    font-size: 0.875rem;
+    font-size: .875rem;
     text-decoration: none;
     color: #374151;
-    background-color: white;
+    background-color: #fff;
     border: none;
-    text-align: left;
+    text-align: left
 }
 
 .dropdown-link:hover {
-    background-color: #f9fafb;
+    background-color: #f9fafb
 }
 
 .hero-banner {
     background: linear-gradient(to right, #1e3a8a, #1c1917);
-    color: white;
+    color: #fff;
     padding: 4rem 1rem;
-    text-align: center;
+    text-align: center
 }
 
 .hero-banner .container {
     padding: 0 1rem;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1200px
 }
 
 .hero-banner .container h1 {
     font-size: 2.5rem;
     font-family: serif;
-    font-weight: bold;
-    margin-bottom: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem
 }
 
 .hero-banner .container p {
     font-size: 1.25rem;
     margin: 1rem auto 0;
     max-width: 42rem;
-    color: #e0e7ff;
+    color: #e0e7ff
 }
 
 .hero-banner .container a {
     display: inline-flex;
     align-items: center;
-    padding: 0.75rem 1.5rem;
+    padding: .75rem 1.5rem;
     background-color: #3b82f6;
-    color: white;
+    color: #fff;
     text-decoration: none;
-    border-radius: 0.375rem;
+    border-radius: .375rem;
     font-size: 1rem;
     font-weight: 500;
     margin-top: 1.5rem;
-    transition: background-color 0.3s;
+    transition: background-color .3s
 }
 
 .hero-banner .container a:hover {
-    background-color: #2563eb;
+    background-color: #2563eb
 }
 
 .featured-article {
-    padding: 3rem 1rem;
+    padding: 3rem 1rem
 }
 
 .featured-article h2 {
     font-size: 1.5rem;
     font-family: serif;
-    font-weight: bold;
+    font-weight: 700;
     color: #fff;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem
 }
 
 .featured-grid {
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(2, 1fr);
-    align-items: center;
+    align-items: center
 }
 
 .featured-article .highlight-grid {
     display: grid;
     gap: 2rem;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr)
 }
 
 @media (min-width: 1024px) {
     .featured-article .highlight-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr)
     }
 }
 
 .featured-highlight {
-    margin-bottom: 2rem;
+    margin-bottom: 2rem
 }
 
 .featured-highlight a {
-    position: relative;
+    position: relative
 }
 
 @media (min-width: 1024px) {
     .featured-highlight {
-        margin-bottom: 0;
+        margin-bottom: 0
     }
 }
 
@@ -218,60 +217,60 @@ body {
     width: 100%;
     height: 24rem;
     object-fit: cover;
-    border-radius: 0.5rem;
-    transition: transform 0.5s;
+    border-radius: .5rem;
+    transition: transform .5s
 }
 
 .highlight-img:hover {
-    transform: scale(1.05);
+    transform: scale(1.05)
 }
 
 .highlight-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(to top, #111827, transparent);
-    opacity: 0.7;
+    opacity: .7
 }
 
 .highlight-content {
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: 1.5rem;
+    padding: 1.5rem
 }
 
 .highlight-content .custom-badge {
     display: inline-block;
     background-color: #2563eb;
-    color: white;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.875rem;
+    color: #fff;
+    padding: .25rem .75rem;
+    font-size: .875rem;
     font-weight: 500;
-    border-radius: 0.375rem;
-    margin-bottom: 0.5rem;
+    border-radius: .375rem;
+    margin-bottom: .5rem
 }
 
 .highlight-title {
     font-size: 1.5rem;
     font-family: serif;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: .5rem
 }
 
 .highlight-desc {
-    color: #e5e7eb;
+    color: #e5e7eb
 }
 
 .recent-articles {
     padding: 3rem 1rem;
-    background-color: #1e2939;
+    background-color: #1e2939
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 1rem
 }
 
 .section-header {
@@ -279,15 +278,15 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem
 }
 
 .section-header h2 {
     font-size: 1.5rem;
     font-family: serif;
-    font-weight: bold;
+    font-weight: 700;
     margin: 0;
-    color: #fff;
+    color: #fff
 }
 
 .link-colored {
@@ -295,109 +294,109 @@ body {
     text-decoration: none;
     font-weight: 500;
     display: flex;
-    align-items: center;
+    align-items: center
 }
 
 .link-colored svg {
-    margin-left: 0.25rem;
+    margin-left: .25rem
 }
 
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 2rem
 }
 
 .article-card {
     background-color: #101828;
-    border-radius: 0.5rem;
+    border-radius: .5rem;
     overflow: hidden;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform .3s ease
 }
 
 .article-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15)
 }
 
 .article-card img {
     width: 380px;
     height: 260px;
     display: block;
-    object-fit: cover;
+    object-fit: cover
 }
 
 .article-card a {
-    text-decoration: none;
+    text-decoration: none
 }
 
 .article-card .content {
-    padding: 1rem;
+    padding: 1rem
 }
 
 .article-card span {
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: .75rem;
+    font-weight: 500
 }
 
 .article-card h3 {
-    margin-top: 0.5rem;
+    margin-top: .5rem;
     font-size: 1.125rem;
     font-weight: 500;
-    color: #ffffff;
+    color: #fff
 }
 
 .article-card p {
-    margin-top: 0.5rem;
-    font-size: 0.875rem;
-    color: #9ca3af;
+    margin-top: .5rem;
+    font-size: .875rem;
+    color: #9ca3af
 }
 
 .article-card .content .date {
     margin-top: 1rem;
     display: flex;
     align-items: center;
-    font-size: 0.75rem;
-    color: #9ca3af;
+    font-size: .75rem;
+    color: #9ca3af
 }
 
 .category-section {
-    padding: 3rem 1rem;
+    padding: 3rem 1rem
 }
 
 .category-section h2 {
     font-size: 1.5rem;
     font-family: serif;
-    font-weight: bold;
-    margin-bottom: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem
 }
 
 .category-tile {
     background-color: #1e2939;
-    border-radius: 0.5rem;
+    border-radius: .5rem;
     padding: 1.5rem;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-    text-decoration: none;
+    transition: transform 0.3s, box-shadow .3s;
+    text-decoration: none
 }
 
 .category-tile h3 {
     font-size: 1.125rem;
     font-weight: 500;
     color: #fff;
-    margin-top: 0.5rem;
+    margin-top: .5rem
 }
 
 .category-tile:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
 }
 
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 1rem;
+    gap: 1rem
 }
 
 .category-icon {
@@ -410,137 +409,137 @@ body {
     background-color: #e0f2fe;
     color: #2563eb;
     margin-bottom: 1rem;
+
     svg {
-        fill: #2563eb;
+        fill: #2563eb
     }
 }
 
 .newsletter {
     background: linear-gradient(to right, #1e40af, #1c1917);
-    color: white;
+    color: #fff;
     padding: 4rem 1rem;
-    text-align: center;
+    text-align: center
 }
 
 .newsletter-container {
     max-width: 768px;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
 .newsletter-title {
     font-size: 1.875rem;
     font-family: serif;
-    font-weight: bold;
-    margin-bottom: 1rem;
+    font-weight: 700;
+    margin-bottom: 1rem
 }
 
 .newsletter-description {
     color: #dbeafe;
     max-width: 36rem;
-    margin: 0 auto 2rem;
+    margin: 0 auto 2rem
 }
 
 .newsletter-form {
     max-width: 400px;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
 .newsletter-fields {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1rem
 }
 
 @media (min-width: 640px) {
     .newsletter-fields {
         flex-direction: row;
-        justify-content: center;
+        justify-content: center
     }
 }
 
 .newsletter-fields input[type="email"] {
-    padding: 0.5rem;
-    border-radius: 0.375rem;
+    padding: .5rem;
+    border-radius: .375rem;
     border: none;
     width: 100%;
-    font-size: 1rem;
+    font-size: 1rem
 }
 
 .newsletter-fields button {
-    padding: 0.5rem 1.5rem;
-    background-color: white;
+    padding: .5rem 1.5rem;
+    background-color: #fff;
     color: #1e40af;
     border: none;
-    border-radius: 0.375rem;
+    border-radius: .375rem;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s;
+    transition: background-color .3s
 }
 
 .newsletter-fields button:hover {
-    background-color: #f3f4f6;
+    background-color: #f3f4f6
 }
 
 .newsletter-note {
-    font-size: 0.875rem;
+    font-size: .875rem;
     color: #c7d2fe;
-    margin-top: 1rem;
+    margin-top: 1rem
 }
 
 .link-colored:hover {
-    color: #2563eb;
+    color: #2563eb
 }
 
 @media (min-width: 768px) {
     .articles-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr)
     }
 }
 
 @media (min-width: 1024px) {
     .articles-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr)
     }
 }
 
 .info-box {
     padding: 1.5rem;
     background-color: #1e2939;
-    border-radius: 0.5rem;
+    border-radius: .5rem
 }
 
 .custom-title {
     font-size: 1rem;
     font-weight: 500;
     color: #fff;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
 .custom-subtitle {
-    font-size: 0.875rem;
+    font-size: .875rem;
     color: #9ca3af;
-    margin: 0.25rem auto 0;
+    margin: .25rem auto 0
 }
-
 
 .info-title {
     font-size: 1.25rem;
     font-family: serif;
-    font-weight: bold;
+    font-weight: 700;
     color: #fff;
-    margin: 0 0 10px;
+    margin: 0 0 10px
 }
 
 .info-text {
     color: #fff;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem
 }
 
 .info-point {
     display: flex;
     align-items: start;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem
 }
 
 .info-number {
@@ -552,102 +551,102 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
+    font-weight: 700
 }
 
 .footer {
     background-color: #1e2939;
-    padding: 3rem 3rem;
-    font-family: sans-serif;
+    padding: 3rem;
+    font-family: sans-serif
 }
 
 .footer-top {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    justify-content: space-between;
+    justify-content: space-between
 }
 
 .footer-brand {
     flex: 1;
-    min-width: 250px;
+    min-width: 250px
 }
 
 .brand-name {
     font-size: 1.5rem;
     font-family: serif;
-    font-weight: bold;
+    font-weight: 700;
     color: #8194f8;
-    text-decoration: none;
+    text-decoration: none
 }
 
 .brand-description {
     margin: 2rem 0;
-    color: #99a1af;
+    color: #99a1af
 }
 
 .footer-links {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     flex: 2;
-    gap: 2rem;
+    gap: 2rem
 }
 
 .footer-links h3 {
     text-transform: uppercase;
-    font-size: 0.875rem;
+    font-size: .875rem;
     color: #fff;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem
 }
 
 .footer-links ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0
 }
 
 .footer-links li {
-    margin-bottom: 0.75rem;
+    margin-bottom: .75rem
 }
 
 .footer-links a {
     color: #99a1af;
-    text-decoration: none;
+    text-decoration: none
 }
 
 .footer-links a:hover {
-    color: #2563eb;
+    color: #2563eb
 }
 
 .footer-links form {
     display: flex;
-    flex-direction: column;
+    flex-direction: column
 }
 
 .footer-links input[type="email"] {
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+    padding: .5rem;
+    margin-bottom: .5rem;
     border: 1px solid #d1d5db;
-    border-radius: 4px;
+    border-radius: 4px
 }
 
 footer .newsletter-form p {
     color: #99a1af;
-    font-size: 0.875rem;
-    margin-bottom: 15px;
+    font-size: .875rem;
+    margin-bottom: 15px
 }
 
 .footer-links button {
     background-color: #2563eb;
-    color: white;
-    padding: 0.5rem;
+    color: #fff;
+    padding: .5rem;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .footer-links button:hover {
-    background-color: #1d4ed8;
+    background-color: #1d4ed8
 }
 
 .footer-bottom {
@@ -656,46 +655,46 @@ footer .newsletter-form p {
     padding-top: 1rem;
     text-align: center;
     color: #99a1af;
-    font-size: 0.875rem;
+    font-size: .875rem
 }
 
 .categories-page {
-    margin: 20px;
+    margin: 20px
 }
 
 .categories-title {
     font-size: 2rem;
     font-family: serif;
-    font-weight: bold;
+    font-weight: 700;
     margin-bottom: 2rem;
-    color: #fff;
+    color: #fff
 }
 
 .categories-description {
     font-size: 1.125rem;
     color: #99a1af;
-    margin-bottom: 3rem;
+    margin-bottom: 3rem
 }
 
 .category-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 1rem
 }
 
 .category-card {
     background-color: #1e2939;
     padding: 1rem;
-    border-radius: 0.5rem;
+    border-radius: .5rem;
     text-align: center;
     font-weight: 500;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow .3s;
     color: #fff;
     display: flex;
     align-items: center;
     gap: 20px;
-    text-decoration: none;
+    text-decoration: none
 }
 
 .category-card:hover {
@@ -703,24 +702,24 @@ footer .newsletter-form p {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-color: #3b82f6;
     color: #fff;
-    text-decoration: none;
+    text-decoration: none
 }
 
 .category-card .icon {
     display: flex;
-    justify-content: center;
+    justify-content: center
 }
 
 .category-card svg {
     stroke: #3b82f6;
-    width: 2rem;
+    width: 2rem
 }
 
 .login-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    padding: 1rem
 }
 
 .login-box {
@@ -729,180 +728,180 @@ footer .newsletter-form p {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
-    background-color: #1e2939;
+    background-color: #1e2939
 }
 
 .login-title {
     text-align: center;
     font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    color: #fff;
+    margin-bottom: .5rem;
+    color: #fff
 }
 
 .login-subtitle {
     text-align: center;
-    font-size: 0.9rem;
+    font-size: .9rem;
     margin-bottom: 1.5rem;
-    color: #9ca3af;
+    color: #9ca3af
 }
 
 .login-subtitle a {
     color: #8194f8;
-    text-decoration: none;
+    text-decoration: none
 }
 
 .login-subtitle a:hover {
-    text-decoration: underline;
+    text-decoration: underline
 }
 
 .login-error {
     background-color: #ffe6e6;
-    color: #cc0000;
-    padding: 0.75rem;
+    color: #c00;
+    padding: .75rem;
     margin-bottom: 1rem;
     border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: .9rem
 }
 
 .login-info {
     background-color: #e6f7ff;
     color: #004085;
-    padding: 0.75rem;
+    padding: .75rem;
     margin-bottom: 1rem;
     border-radius: 5px;
-    font-size: 0.9rem;
+    font-size: .9rem
 }
 
 .login-form,
 #registration_form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1rem
 }
 
 #registration_form div {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1rem
 }
 
 .login-form label {
     font-weight: 500;
-    margin-bottom: 0.25rem;
-    color: #d1d5db;
+    margin-bottom: .25rem;
+    color: #d1d5db
 }
 
 .login-form input[type="email"],
 .login-form input[type="password"],
 .login-form input[type="text"] {
-    padding: 0.5rem;
+    padding: .5rem;
     border: 1px solid #4b5563;
     border-radius: 4px;
     font-size: 1rem;
     background-color: #374151;
-    color: #fff;
+    color: #fff
 }
 
 .login-remember {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: .5rem
 }
 
 .login-form button {
-    padding: 0.6rem;
+    padding: .6rem;
     background-color: #8194f8;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 4px;
-    font-weight: bold;
-    cursor: pointer;
+    font-weight: 700;
+    cursor: pointer
 }
 
 .login-form button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3
 }
 
 .page-header {
     padding: 3rem 0 2rem;
-    text-align: center;
+    text-align: center
 }
 
 .page-header h1 {
     font-size: 2.5rem;
     font-family: serif;
-    font-weight: bold;
+    font-weight: 700;
     color: #fff;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem
 }
 
 .page-description {
     font-size: 1.125rem;
     color: #9ca3af;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
 .empty-state {
     text-align: center;
     padding: 4rem 2rem;
-    color: #9ca3af;
+    color: #9ca3af
 }
 
 .empty-icon {
     margin-bottom: 1rem;
-    color: #6b7280;
+    color: #6b7280
 }
 
 .empty-state h3 {
     font-size: 1.25rem;
     color: #fff;
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem
 }
 
 .article-image {
     position: relative;
-    overflow: hidden;
+    overflow: hidden
 }
 
 .article-image img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: transform .3s ease
 }
 
 .article-card:hover .article-image img {
-    transform: scale(1.05);
+    transform: scale(1.05)
 }
 
 .article-content {
-    padding: 1.5rem;
+    padding: 1.5rem
 }
 
 .article-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem
 }
 
 .article-category {
     background-color: #3b82f6;
-    color: white;
-    padding: 0.25rem 0.75rem;
+    color: #fff;
+    padding: .25rem .75rem;
     border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 500;
+    font-size: .75rem;
+    font-weight: 500
 }
 
 .article-date {
     color: #9ca3af;
-    font-size: 0.875rem;
+    font-size: .875rem
 }
 
 .article-title {
-    margin-bottom: 1rem;
+    margin-bottom: 1rem
 }
 
 .article-title a {
@@ -911,11 +910,11 @@ footer .newsletter-form p {
     font-size: 1.25rem;
     font-weight: 600;
     line-height: 1.4;
-    transition: color 0.3s ease;
+    transition: color .3s ease
 }
 
 .article-title a:hover {
-    color: #3b82f6;
+    color: #3b82f6
 }
 
 .article-footer {
@@ -923,94 +922,94 @@ footer .newsletter-form p {
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid #374151;
-    padding-top: 2rem;
+    padding-top: 2rem
 }
 
 .article-author {
     color: #9ca3af;
-    font-size: 1rem;
+    font-size: 1rem
 }
 
 .article-summary {
     background-color: #1e2939;
     padding: 1rem;
-    border-radius: 0.75rem;
+    border-radius: .75rem;
     margin-bottom: 2rem;
-    border-left: 4px solid #3b82f6;
+    border-left: 4px solid #3b82f6
 }
 
 .read-more {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: .5rem;
     color: #3b82f6;
     text-decoration: none;
-    font-size: 0.875rem;
+    font-size: .875rem;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color .3s ease
 }
 
 .read-more:hover {
-    color: #2563eb;
+    color: #2563eb
 }
 
 .article-detail {
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 2rem 0
 }
 
 .breadcrumb {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: .5rem;
     margin-bottom: 2rem;
-    font-size: 0.875rem;
+    font-size: .875rem
 }
 
 .breadcrumb a {
     color: #3b82f6;
-    text-decoration: none;
+    text-decoration: none
 }
 
 .breadcrumb a:hover {
-    text-decoration: underline;
+    text-decoration: underline
 }
 
 .breadcrumb .separator {
-    color: #6b7280;
+    color: #6b7280
 }
 
 .breadcrumb .current {
-    color: #9ca3af;
+    color: #9ca3af
 }
 
 .article-header {
-    margin-bottom: 2rem;
+    margin-bottom: 2rem
 }
 
 .article-header .article-meta {
-    margin-bottom: 1rem;
+    margin-bottom: 1rem
 }
 
 .article-header .article-title {
     font-size: 2.5rem;
-    font-weight: bold;
+    font-weight: 700;
     color: #fff;
     line-height: 1.2;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem
 }
 
 .article-hero-image {
     margin-bottom: 2rem;
-    border-radius: 0.75rem;
-    overflow: hidden;
+    border-radius: .75rem;
+    overflow: hidden
 }
 
 .article-hero-image img {
     width: 100%;
     height: 400px;
-    object-fit: cover;
+    object-fit: cover
 }
 
 .summary-text {
@@ -1018,34 +1017,34 @@ footer .newsletter-form p {
     font-size: 1.125rem;
     line-height: 1.6;
     margin: 0;
-    font-style: italic;
+    font-style: italic
 }
 
 .article-body {
     color: #e5e7eb;
     line-height: 1.8;
-    font-size: 1.125rem;
+    font-size: 1.125rem
 }
 
 .article-body h2,
 .article-body h3,
 .article-body h4 {
     color: #fff;
-    margin: 2rem 0 1rem;
+    margin: 2rem 0 1rem
 }
 
 .article-body p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem
 }
 
 .article-body ul,
 .article-body ol {
     margin: 1.5rem 0;
-    padding-left: 2rem;
+    padding-left: 2rem
 }
 
 .article-body li {
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem
 }
 
 .article-body blockquote {
@@ -1053,163 +1052,163 @@ footer .newsletter-form p {
     padding-left: 1.5rem;
     margin: 2rem 0;
     font-style: italic;
-    color: #9ca3af;
+    color: #9ca3af
 }
 
 .article-body code {
     background-color: #374151;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
+    padding: .25rem .5rem;
+    border-radius: .25rem;
     font-family: 'Courier New', monospace;
-    color: #fbbf24;
+    color: #fbbf24
 }
 
 .article-body pre {
     background-color: #1e2939;
     padding: 1.5rem;
-    border-radius: 0.5rem;
+    border-radius: .5rem;
     overflow-x: auto;
-    margin: 1.5rem 0;
+    margin: 1.5rem 0
 }
 
 .article-body pre code {
     background: none;
     padding: 0;
-    color: #e5e7eb;
+    color: #e5e7eb
 }
 
 .article-actions {
     display: flex;
     gap: 1rem;
     margin-bottom: 2rem;
-    flex-wrap: wrap;
+    flex-wrap: wrap
 }
 
 .action-button {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: .5rem;
     background-color: #374151;
     color: #e5e7eb;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
+    padding: .75rem 1.5rem;
+    border-radius: .5rem;
     cursor: pointer;
-    font-size: 0.875rem;
-    transition: background-color 0.3s ease;
+    font-size: .875rem;
+    transition: background-color .3s ease
 }
 
 .action-button:hover {
-    background-color: #4b5563;
+    background-color: #4b5563
 }
 
 .article-navigation {
-    text-align: center;
+    text-align: center
 }
 
 .back-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: .5rem;
     color: #3b82f6;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: color .3s ease
 }
 
 .back-link:hover {
-    color: #2563eb;
+    color: #2563eb
 }
 
 .category-navigation {
     margin-top: 3rem;
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid #374151;
+    border-top: 1px solid #374151
 }
 
 .subcategory-list h2 {
-    color:#fff;
-    margin-bottom: 20px;
+    color: #fff;
+    margin-bottom: 20px
 }
 
 @media (max-width: 768px) {
     .page-header h1 {
-        font-size: 2rem;
+        font-size: 2rem
     }
 
     .articles-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.5rem
     }
 
     .article-header .article-title {
-        font-size: 2rem;
+        font-size: 2rem
     }
 
     .article-hero-image img {
-        height: 250px;
+        height: 250px
     }
 
     .article-actions {
-        flex-direction: column;
+        flex-direction: column
     }
 
     .action-button {
-        justify-content: center;
+        justify-content: center
     }
 }
 
 .category-selector {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1rem
 }
 
 .category-select {
-    padding: 0.5rem 1rem;
+    padding: .5rem 1rem;
     border: 1px solid #374151;
-    border-radius: 0.5rem;
+    border-radius: .5rem;
     background-color: #1e2939;
     color: #e5e7eb;
-    font-size: 0.875rem;
+    font-size: .875rem;
     cursor: pointer;
-    transition: border-color 0.3s ease;
+    transition: border-color .3s ease
 }
 
 .category-select:focus {
     outline: none;
-    border-color: #3b82f6;
+    border-color: #3b82f6
 }
 
 .category-select option {
     background-color: #1e2939;
-    color: #e5e7eb;
+    color: #e5e7eb
 }
 
 .articles-container {
     min-height: 400px;
-    position: relative;
+    position: relative
 }
 
 .no-category-message,
 .no-articles-message {
     text-align: center;
     padding: 4rem 2rem;
-    color: #9ca3af;
+    color: #9ca3af
 }
 
 .no-category-icon,
 .no-articles-icon {
     margin-bottom: 1rem;
-    color: #6b7280;
+    color: #6b7280
 }
 
 .no-category-message h3,
 .no-articles-message h3 {
     font-size: 1.25rem;
     color: #fff;
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem
 }
 
 .no-category-message p,
@@ -1217,23 +1216,23 @@ footer .newsletter-form p {
     font-size: 1rem;
     line-height: 1.6;
     max-width: 500px;
-    margin: 0 auto;
+    margin: 0 auto
 }
 
 @media (max-width: 768px) {
     .section-header {
         flex-direction: column;
         gap: 1rem;
-        align-items: stretch;
+        align-items: stretch
     }
 
     .category-selector {
-        order: 2;
+        order: 2
     }
 
     .link-colored {
         order: 3;
-        text-align: center;
+        text-align: center
     }
 }
 
@@ -1241,63 +1240,278 @@ footer .newsletter-form p {
     margin-bottom: 2rem;
     padding: 1.5rem;
     background-color: #1e2939;
-    border-radius: 0.75rem;
+    border-radius: .75rem
 }
 
 .filter-form {
     display: flex;
     align-items: center;
     gap: 1rem;
-    flex-wrap: wrap;
+    flex-wrap: wrap
 }
 
 .filter-group {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: .75rem
 }
 
 .filter-label {
     color: #e5e7eb;
-    font-size: 0.875rem;
+    font-size: .875rem;
     font-weight: 500;
-    white-space: nowrap;
+    white-space: nowrap
 }
 
 .filter-select {
-    padding: 0.5rem 1rem;
+    padding: .5rem 1rem;
     border: 1px solid #374151;
-    border-radius: 0.5rem;
+    border-radius: .5rem;
     background-color: #101828;
     color: #e5e7eb;
-    font-size: 0.875rem;
+    font-size: .875rem;
     cursor: pointer;
-    transition: border-color 0.3s ease;
-    min-width: 200px;
+    transition: border-color .3s ease;
+    min-width: 200px
 }
 
 .filter-select:focus {
     outline: none;
-    border-color: #3b82f6;
+    border-color: #3b82f6
 }
 
 .filter-select option {
     background-color: #101828;
-    color: #e5e7eb;
+    color: #e5e7eb
+}
+
+section#contact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    margin: 20px 0;
+    padding: 10px 20px
+}
+
+section#contact .left,
+section#contact .right {
+    width: 100%
+}
+
+section#contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-top: 20px
+}
+
+section#contact .form-group {
+    display: flex;
+    gap: 5px;
+    width: 100%
+}
+
+textarea.auto-height {
+    width: 100%;
+    min-height: 100px;
+    overflow-y: hidden;
+    resize: vertical;
+    background-color: #374151;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    color: #fff
+}
+
+section#contact form select,
+section#contact form input {
+    background-color: #374151;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    width: 100%
+}
+
+section#contact form #contact_form_submit {
+    background-color: #3b82f6;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 100%
+}
+
+section#contact form #contact_form_submit:hover {
+    background-color: #2563eb
+}
+
+section#contact .form-group div {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    gap: 10px;
+    width: 100%
+}
+
+section#contact .info .email,
+section#contact .info .phone,
+section#contact .info .adresse {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 10px
+}
+
+section#contact .info .email .text,
+section#contact .info .phone .text,
+section#contact .info .adresse .text {
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+}
+
+section#contact .info .email .text span,
+section#contact .info .phone .text span {
+    font-size: .875rem;
+    color: #9ca3af
+}
+
+section#contact .info .email .icon {
+    background-color: #312E81;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+
+    svg {
+        fill: #818CF8
+    }
+}
+
+section#contact .info .phone .icon {
+    background-color: #581C87;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+
+    svg {
+        fill: #C084FC
+    }
+}
+
+section#contact .info .adresse .icon {
+    background-color: #134E4A;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+
+    svg {
+        fill: #2DD4BF
+    }
+}
+
+section#contact .info .question {
+    display: flex;
+    gap: 20px;
+    flex-direction: column
+}
+
+section#contact .info .question .ask {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background-color: #1f2937;
+    padding: 16px;
+    border-radius: 6px;
+
+    svg {
+        fill: #2563eb
+    }
+}
+
+section#contact .info .question .ask .text h4 {
+    margin-bottom: 5px
+}
+
+section#contact h2,
+section#contact h3,
+section#contact h4,
+section#contact p {
+    color: #fff
+}
+
+section#mission .left {
+    color: #fff;
+
+    h2 {
+        margin-bottom: 10px
+    }
+}
+
+section#mission .left p {
+    line-height: 1.75rem
+}
+
+section#mission .right {
+    width: 100%;
+
+    img {
+        width: 100%;
+    }
+
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    object-fit: cover
+}
+
+section#mission {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    margin: 20px 0;
+    padding: 10px 20px
+}
+
+section#mission .left .mission-icons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px
+}
+
+section#mission .left .mission-icons .inno,
+section#mission .left .mission-icons .qualite,
+section#mission .left .mission-icons .passion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff
 }
 
 @media (max-width: 768px) {
     .filter-form {
         flex-direction: column;
-        align-items: stretch;
+        align-items: stretch
     }
 
     .filter-group {
         flex-direction: column;
-        align-items: stretch;
+        align-items: stretch
     }
 
     .filter-select {
-        min-width: auto;
+        min-width: auto
     }
 }
