@@ -1599,6 +1599,291 @@ section#team .team-icon h3 {
     font-size: 1.5rem;
 }
 
+section#politique {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin: auto;
+    width: 63%;
+    display: flex;
+    flex-direction: column;
+}
+
+section#politique .section-intro {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+section#politique .section-intro .intro-card {
+    background-color: rgba(30,58,138,1.0);
+    border: 1px solid rgb(29, 78, 216);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+section#politique .section-intro .intro-card .flex-start {
+    display: flex;
+    align-items: flex-start;
+}
+
+section#politique .section-intro .intro-card .shield-icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    fill: rgb(96, 165, 250);
+    margin-top: 0.25rem;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+}
+
+section#politique .section-intro .intro-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #BFDBFE;
+    margin-bottom: 0.5rem;
+}
+
+section#politique .section-intro .intro-card p {
+    color: #93C5FD;
+}
+
+section#politique section#information,
+section#politique section#common,
+section#politique section#protection,
+section#politique section#droit,
+section#politique section#cookie,
+section#politique section#partage,
+section#politique section#conservation,
+section#politique section#modified,
+section#politique section#contacter {
+    margin-bottom: 3rem;
+}
+
+section#politique section#information .title,
+section#politique section#common .title,
+section#politique section#protection .title,
+section#politique section#droit .title,
+section#politique section#cookie .title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+section#politique section#information .title svg {
+    fill: rgb(129, 140, 248);
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.75rem;
+}
+
+section#politique section#common .title svg {
+    fill: rgb(192, 132, 252);
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.75rem;
+}
+
+section#politique section#protection .title svg {
+    fill: rgb(45, 212, 191);
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.75rem;
+}
+
+section#politique section#droit .title svg {
+    fill: rgb(192, 132, 252);
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.75rem;
+}
+
+section#politique section#cookie .title svg {
+    fill: rgb(251 146 60);
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.75rem;
+}
+
+section#politique section#information .title h2,
+section#politique section#common .title h2,
+section#politique section#protection .title h2,
+section#politique section#droit .title h2,
+section#politique section#cookie .title h2,
+section#politique section#partage h2,
+section#politique section#conservation h2,
+section#politique section#modified h2,
+section#politique section#contacter h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+section#politique section#information h3,
+section#politique section#common h3,
+section#politique section#droit h3 {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+section#politique section#information ul,
+section#politique section#common ul,
+section#politique section#droit .droit-grid ul,
+section#politique section#conservation ul,
+section#politique section#modified ul {
+    color: #D1D5DB;
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+section#politique section#information ul li,
+section#politique section#common ul li,
+section#politique section#protection ul li,
+section#politique section#droit .droit-grid ul li,
+section#politique section#partage .partage-card ul li,
+section#politique section#conservation ul li,
+section#politique section#modified ul li {
+    margin-bottom: 1rem;
+}
+
+section#politique section#common .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+section#politique section#common .info-grid .info-card {
+    background-color: #1F2937;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+section#politique section#protection .intro-card {
+    background-color: rgba(20,83,45,1.0);
+    border: 1px solid rgb(21, 128, 61);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+section#politique section#protection h3 {
+    color: #BBF7D0;
+    font-size: 1.125;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+section#politique section#protection ul {
+    color: #86EFAC;
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+section#politique section#protection p,
+section#politique section#conservation p,
+section#politique section#cookie p,
+section#politique section#modified p,
+section#politique section#contacter p {
+    color: #D1D5DB;
+}
+
+section#politique section#droit .droit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+section#politique section#droit .droit-card {
+    background-color: rgb(30 58 138 / 1.0);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+section#politique section#droit .droit-card p {
+    color: #BFDBFE;
+}
+
+section#politique section#droit .droit-card a{
+    color: inherit;
+}
+
+section#politique section#cookie .cookie-table {
+    overflow-x: auto;
+    margin-top: 1.5rem;
+}
+
+section#politique section#cookie table {
+    background-color: rgb(31 41 55);
+    width: 100%;
+}
+
+section#politique section#cookie table thead tr th {
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    text-align: left;
+    padding: 0.75rem 1.5rem;
+    color: #9CA3AF;
+} 
+
+section#politique section#cookie table tbody tr td {
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 1rem 1.5rem;
+    white-space: nowrap;
+    color:#D1D5DB
+}
+
+section#politique section#partage .partage-card {
+    background-color: rgba(113, 63, 18, 0.2 );
+    border:1px solid rgb(161 98 7 );
+    padding: 1.5rem;
+    border-width: 1px;
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+section#politique section#partage .partage-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: rgb(254 240 138);
+    margin-bottom: 0.5rem;
+}
+
+section#politique section#partage .partage-card p {
+    color: rgb(253 224 71);
+    margin-bottom: 1rem;
+}
+
+section#politique section#partage .partage-card ul {
+    color: rgb(253 224 71);
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+section#politique section#conservation h2,
+section#politique section#modified h2 {
+    margin-bottom: 1.5rem;
+}
+
+section#politique section#conservation p,
+section#politique section#modified p,
+section#politique section#contacter p {
+    margin-bottom: 1rem;
+}
+
+section#politique section#contacter .contact-card {
+    background-color: rgb(31 41 55);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+}
+
 @media (max-width: 768px) {
     .filter-form {
         flex-direction: column;
