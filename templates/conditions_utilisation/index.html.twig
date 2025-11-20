@@ -1,20 +1,224 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ConditionsUtilisationController!{% endblock %}
+{% block title %}Neurogameron - Conditions d'utilisation
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<section class="hero-banner">
+		<div class="container">
+			<div>
+				<h1>Conditions d'utilisation</h1>
+				<p>Les règles et conditions qui régissent l'utilisation de la plateforme Neurogameron</p>
+			</div>
+		</div>
+	</section>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<section id="conditions">
+		<div class="section-intro">
+			<div class="intro-card">
+				<div class="flex-start">
+					<svg class="shield-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M128 128C128 92.7 156.7 64 192 64L341.5 64C358.5 64 374.8 70.7 386.8 82.7L493.3 189.3C505.3 201.3 512 217.6 512 234.6L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 128zM336 122.5L336 216C336 229.3 346.7 240 360 240L453.5 240L336 122.5zM248 320C234.7 320 224 330.7 224 344C224 357.3 234.7 368 248 368L392 368C405.3 368 416 357.3 416 344C416 330.7 405.3 320 392 320L248 320zM248 416C234.7 416 224 426.7 224 440C224 453.3 234.7 464 248 464L392 464C405.3 464 416 453.3 416 440C416 426.7 405.3 416 392 416L248 416z"/></svg>
+					<div>
+						<h3>Dernière mise à jour : 10 avril 2025</h3>
+						<p>En utilisant Neurogameron, vous acceptez d'être lié par ces conditions d'utilisation. Veuillez les lire attentivement avant d'utiliser nos services.</p>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/loichuet/Documents/developpement/symfony/veille-info/src/Controller/ConditionsUtilisationController.php</code></li>
-        <li>Your template at <code>/Users/loichuet/Documents/developpement/symfony/veille-info/templates/conditions_utilisation/index.html.twig</code></li>
-    </ul>
-</div>
+		<section id="acceptation">
+			<div class="title">
+				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M384 96L512 96C529.7 96 544 110.3 544 128C544 145.7 529.7 160 512 160L398.4 160C393.2 185.8 375.5 207.1 352 217.3L352 512L512 512C529.7 512 544 526.3 544 544C544 561.7 529.7 576 512 576L128 576C110.3 576 96 561.7 96 544C96 526.3 110.3 512 128 512L288 512L288 217.3C264.5 207 246.8 185.7 241.6 160L128 160C110.3 160 96 145.7 96 128C96 110.3 110.3 96 128 96L256 96C270.6 76.6 293.8 64 320 64C346.2 64 369.4 76.6 384 96zM439.6 384L584.4 384L512 259.8L439.6 384zM512 480C449.1 480 396.8 446 386 401.1C383.4 390.1 387 378.8 392.7 369L487.9 205.8C492.9 197.2 502.1 192 512 192C521.9 192 531.1 197.3 536.1 205.8L631.3 369C637 378.8 640.6 390.1 638 401.1C627.2 445.9 574.9 480 512 480zM126.8 259.8L54.4 384L199.3 384L126.8 259.8zM.9 401.1C-1.7 390.1 1.9 378.8 7.6 369L102.8 205.8C107.8 197.2 117 192 126.9 192C136.8 192 146 197.3 151 205.8L246.2 369C251.9 378.8 255.5 390.1 252.9 401.1C242.1 445.9 189.8 480 126.9 480C64 480 11.7 446 .9 401.1z"/></svg>
+				<h2>Acceptation des conditions</h2>
+			</div>
+
+			<div class="content">
+				<p>En accédant et en utilisant Neurogameron ("le Service"), vous acceptez d'être lié par ces Conditions d'Utilisation ("Conditions"). Si vous n'acceptez pas toutes les conditions énoncées dans ce document, vous ne devez pas utiliser le Service.</p>
+			</div>
+
+			<div class="intro-card">
+				<div class="flex-start">
+					<svg class="warning-circle" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 576C178.6 576 64 461.4 64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576zM320 384C302.3 384 288 398.3 288 416C288 433.7 302.3 448 320 448C337.7 448 352 433.7 352 416C352 398.3 337.7 384 320 384zM320 192C301.8 192 287.3 207.5 288.6 225.7L296 329.7C296.9 342.3 307.4 352 319.9 352C332.5 352 342.9 342.3 343.8 329.7L351.2 225.7C352.5 207.5 338.1 192 319.8 192z"/></svg>
+					<div>
+						<p>Ces conditions peuvent être modifiées à tout moment. Les modifications entrent en vigueur dès leur publication sur cette page.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="utilisation">
+			<div class="title">
+				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M96 192C96 130.1 146.1 80 208 80C269.9 80 320 130.1 320 192C320 253.9 269.9 304 208 304C146.1 304 96 253.9 96 192zM32 528C32 430.8 110.8 352 208 352C305.2 352 384 430.8 384 528L384 534C384 557.2 365.2 576 342 576L74 576C50.8 576 32 557.2 32 534L32 528zM464 128C517 128 560 171 560 224C560 277 517 320 464 320C411 320 368 277 368 224C368 171 411 128 464 128zM464 368C543.5 368 608 432.5 608 512L608 534.4C608 557.4 589.4 576 566.4 576L421.6 576C428.2 563.5 432 549.2 432 534L432 528C432 476.5 414.6 429.1 385.5 391.3C408.1 376.6 435.1 368 464 368z"/></svg>
+				<h2>Utilisation du service</h2>
+			</div>
+
+			<div>
+				<h3>Utilisation autorisée</h3>
+				<p>Vous pouvez utiliser Neurogameron pour :</p>
+				<ul>
+					<li>Lire et consulter les articles et contenus publiés</li>
+					<li>Créer un compte utilisateur et gérer votre profil</li>
+					<li>Commenter et interagir avec le contenu de manière respectueuse</li>
+					<li>Partager des articles sur les réseaux sociaux</li>
+					<li>Vous abonner à notre newsletter</li>
+					<li>Contacter notre équipe pour des questions légitimes</li>
+				</ul>
+				<h3>Utilisation interdite</h3>
+				<div class="interdition">
+					<p>Il est strictement interdit de :</p>
+					<ul>
+						<li>Publier du contenu illégal, offensant, diffamatoire ou haineux</li>
+						<li>Usurper l'identité d'une autre personne ou entité</li>
+						<li>Spammer ou envoyer des messages non sollicités</li>
+						<li>Tenter de pirater ou compromettre la sécurité du site</li>
+						<li>Utiliser des robots, scrapers ou outils automatisés</li>
+						<li>Reproduire, distribuer ou modifier notre contenu sans autorisation</li>
+						<li>Utiliser le service à des fins commerciales non autorisées</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section id="comptes">
+			<div class="title">
+				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 64C324.6 64 329.2 65 333.4 66.9L521.8 146.8C543.8 156.1 560.2 177.8 560.1 204C559.6 303.2 518.8 484.7 346.5 567.2C329.8 575.2 310.4 575.2 293.7 567.2C121.3 484.7 80.6 303.2 80.1 204C80 177.8 96.4 156.1 118.4 146.8L306.7 66.9C310.9 65 315.4 64 320 64z"/></svg>
+				<h2>Comptes utilisateur</h2>
+			</div>
+
+			<div>
+				<h3>Création de compte</h3>
+				<ul>
+					<li>Vous devez fournir des informations exactes et complètes</li>
+					<li>Vous êtes responsable de la confidentialité de votre mot de passe</li>
+					<li>Vous devez avoir au moins 16 ans pour créer un compte</li>
+					<li>Un seul compte par personne est autorisé</li>
+				</ul>
+				<h3>Responsabilités</h3>
+				<div class="responsabilite">
+					<ul>
+						<li>Vous êtes responsable de toutes les activités sous votre compte</li>
+						<li>Vous devez nous notifier immédiatement de toute utilisation non autorisée</li>
+						<li>Vous devez maintenir vos informations à jour</li>
+						<li>Vous acceptez de recevoir des communications liées au service</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section id="contenu">
+			<div class="title">
+				<svg class="shield-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M128 128C128 92.7 156.7 64 192 64L341.5 64C358.5 64 374.8 70.7 386.8 82.7L493.3 189.3C505.3 201.3 512 217.6 512 234.6L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 128zM336 122.5L336 216C336 229.3 346.7 240 360 240L453.5 240L336 122.5zM248 320C234.7 320 224 330.7 224 344C224 357.3 234.7 368 248 368L392 368C405.3 368 416 357.3 416 344C416 330.7 405.3 320 392 320L248 320zM248 416C234.7 416 224 426.7 224 440C224 453.3 234.7 464 248 464L392 464C405.3 464 416 453.3 416 440C416 426.7 405.3 416 392 416L248 416z"/></svg>
+				<h2>Contenu et propriété intellectuelle</h2>
+			</div>
+
+			<div>
+				<h3>Notre contenu</h3>
+				<p>Tout le contenu publié sur Neurogameron (articles, images, logos, design) est protégé par le droit d'auteur et appartient à Neurogameron ou à ses partenaires.</p>
+
+				<div class="contenu-card">
+					<p>
+						<strong>Utilisation autorisée</strong>
+						: Vous pouvez partager nos articles avec attribution appropriée pour un usage personnel et non commercial.</p>
+				</div>
+
+				<h3>Votre contenu</h3>
+				<p>En publiant du contenu sur Neurogameron (commentaires, messages), vous nous accordez une licence non exclusive pour utiliser, modifier et afficher ce contenu dans le cadre du service.</p>
+				<ul>
+					<li>Vous conservez la propriété de votre contenu</li>
+					<li>Vous garantissez avoir les droits nécessaires sur le contenu publié</li>
+					<li>Vous acceptez que votre contenu soit modéré selon nos règles communautaires</li>
+				</ul>
+			</div>
+		</section>
+
+		<section id="limite">
+			<div class="title">
+				<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M201.6 217.4L182.9 198.7C170.4 186.2 170.4 165.9 182.9 153.4L297.6 38.6C310.1 26.1 330.4 26.1 342.9 38.6L361.6 57.4C374.1 69.9 374.1 90.2 361.6 102.7L246.9 217.4C234.4 229.9 214.1 229.9 201.6 217.4zM308 275.7L276.6 244.3L388.6 132.3L508 251.7L396 363.7L364.6 332.3L132.6 564.3C117 579.9 91.7 579.9 76 564.3C60.3 548.7 60.4 523.4 76 507.7L308 275.7zM422.9 438.6C410.4 426.1 410.4 405.8 422.9 393.3L537.6 278.6C550.1 266.1 570.4 266.1 582.9 278.6L601.6 297.3C614.1 309.8 614.1 330.1 601.6 342.6L486.9 457.4C474.4 469.9 454.1 469.9 441.6 457.4L422.9 438.7z"/></svg>
+				<h2>Limitation de responsabilité</h2>
+			</div>
+
+			<div class="limite-card">
+				<h3>Clause de non-responsabilité</h3>
+				<p>
+					<strong>Service "en l'état"</strong>
+					: Neurogameron est fourni "en l'état" sans garantie d'aucune sorte. Nous ne garantissons pas que le service sera ininterrompu, sécurisé ou exempt d'erreurs.</p>
+				<p>
+					<strong>Contenu tiers</strong>
+					: Nous ne sommes pas responsables du contenu des liens externes ou des informations fournies par des tiers.</p>
+				<p>
+					<strong>Dommages</strong>
+					: En aucun cas Neurogameron ne sera responsable des dommages indirects, accessoires ou consécutifs résultant de l'utilisation du service.</p>
+			</div>
+		</section>
+
+		<section id="suspension">
+			<div class="title">
+				<h2>Suspension et résiliation</h2>
+			</div>
+
+			<div class="suspension-card">
+				<div>
+					<h3>Par vous</h3>
+					<ul>
+						<li>Vous pouvez supprimer votre compte à tout moment</li>
+						<li>La suppression est effective immédiatement</li>
+						<li>Certaines données peuvent être conservées pour des raisons légales</li>
+					</ul>
+				</div>
+				<div>
+					<h3>Par nous</h3>
+					<ul>
+						<li>Violation des conditions d'utilisation</li>
+						<li>Activité frauduleuse ou illégale</li>
+						<li>Comportement nuisant à la communauté</li>
+						<li>Non-paiement (services premium futurs)</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		<section id="droit">
+			<div class="title">
+				<h2>Droit applicable et juridiction</h2>
+			</div>
+
+			<div class="content">
+				<p>Ces conditions d'utilisation sont régies par le droit français. Tout litige relatif à l'utilisation de TechWatch sera soumis à la juridiction exclusive des tribunaux de Paris, France.</p>
+				<hr>
+				<h3>Résolution des litiges</h3>
+				<p>Avant toute action en justice, nous encourageons la résolution amiable des différends. Contactez-nous à
+					<span>legal@neurogameron.fr</span>
+					pour discuter de toute préoccupation.</p>
+			</div>
+		</section>
+
+		<section id="dispositions">
+			<div class="title">
+				<h2>Dispositions générales</h2>
+			</div>
+
+			<div class="content">
+				<h3>Divisibilité</h3>
+				<p>Si une disposition de ces conditions est jugée invalide, les autres dispositions resteront en vigueur.</p>
+				<h3>Intégralité de l'accord</h3>
+				<p>Ces conditions constituent l'intégralité de l'accord entre vous et Neurogameron concernant l'utilisation du service.</p>
+				<h3>Renonciation</h3>
+				<p>Le fait de ne pas exercer un droit ou une disposition de ces conditions ne constitue pas une renonciation à ce droit ou à cette disposition.</p>
+			</div>
+		</section>
+
+		<section id="contacted">
+			<div class="title">
+				<h2>Contact</h2>
+			</div>
+			<div class="content">
+				<p>Pour toute question concernant ces conditions d'utilisation :</p>
+				<p><strong>Email</strong> : legal@techwatch.fr</p>
+				<p><strong>Adresse</strong> : TechWatch, 123 Avenue de l'Innovation, 75001 Paris, France</p>
+				<p><strong>Téléphone</strong> : +33 1 23 45 67 89</p>
+			</div>
+		</section>
+
+	</section>
+	{% include "footer.html.twig" %}
 {% endblock %}
