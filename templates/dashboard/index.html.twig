@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Neurogameron - Dashboard
+{% endblock %}
+
+{% block body %}
+	<section class="hero-banner">
+		<div class="container">
+			<div>
+				<h1>Dashboard</h1>
+			</div>
+		</div>
+	</section>
+
+	<section id="profile">
+		<div class="profile-tabs" data-controller="tabs">
+			<div class="tabs-header">
+				<button class="tab-button {{ active_tab == 'profile' ? 'active' }}" data-tabs-target="tabButton" data-tab="profile" data-action="click->tabs#switch">
+					Informations du profil
+				</button>
+				<button class="tab-button {{ active_tab == 'password' ? 'active' }}" data-tabs-target="tabButton" data-tab="password" data-action="click->tabs#switch">
+					Changer le mot de passe
+				</button>
+				<button class="tab-button {{ active_tab == 'preferences' ? 'active' }}" data-tabs-target="tabButton" data-tab="preferences" data-action="click->tabs#switch">
+					Préférences
+				</button>
+			</div>
+
+			<div class="tabs-content">
+				{% if message %}
+					<div class="alert {{ message.type }}">
+						<span>{{ message.text }}</span>
+					</div>
+				{% endif %}
+
+				<div data-tabs-target="tabContent" data-tab="profile">
+					<form method="post" action="{{ path('app_profile_update') }}">
+						<div class="form-group">
+							<label for="name">Nom complet</label>
+							<input type="text" id="name" name="name" value="{{ user.firstName }} {{ user.lastName }}"/>
+						</div>
+						<div class="form-group">
+							<label for="email">Adresse email</label>
+							<input type="email" id="email" name="email" value="{{ user.email }}"/>
+						</div>
+						<button type="submit" class="btn-primary">
+							Enregistrer les modifications
+						</button>
+					</form>
+				</div>
+
+				<div data-tabs-target="tabContent" data-tab="password" style="display:none">
+					<form method="post" action="{{ path('app_profile_password') }}">
+						<div class="form-group">
+							<label for="current-password">Mot de passe actuel</label>
+							<input type="password" id="current-password" name="current_password" required/>
+						</div>
+						<div class="form-group">
+							<label for="new-password">Nouveau mot de passe</label>
+							<input type="password" id="new-password" name="new_password" required minlength="6"/>
+						</div>
+						<div class="form-group">
+							<label for="confirm-password">Confirmer le nouveau mot de passe</label>
+							<input type="password" id="confirm-password" name="confirm_password" required minlength="6"/>
+						</div>
+						<button type="submit" class="btn-primary">
+							Mettre à jour le mot de passe
+						</button>
+					</form>
+				</div>
+
+				<div data-tabs-target="tabContent" data-tab="preferences" style="display:none">
+					<div class="preferences">
+						<h3>Préférences de notification</h3>
+						<div class="checkbox-group">
+							<label><input type="checkbox" name="newsletter" checked/> Newsletter hebdomadaire</label>
+							<label><input type="checkbox" name="new_articles" checked/> Nouveaux articles</label>
+							<label><input type="checkbox" name="comment_replies" checked/> Réponses aux commentaires</label>
+						</div>
+						<h3>Catégories préférées</h3>
+						<div class="checkbox-grid">
+							<label><input type="checkbox" name="categories[]" value="programming" checked/> Programmation</label>
+							<label><input type="checkbox" name="categories[]" value="ai" checked/> Intelligence Artificielle</label>
+							<label><input type="checkbox" name="categories[]" value="space"/> Espace</label>
+							<label><input type="checkbox" name="categories[]" value="gaming" checked/> Jeux Vidéo</label>
+							<label><input type="checkbox" name="categories[]" value="handball"/> Handball</label>
+						</div>
+						<button type="submit" class="btn-primary">Enregistrer les préférences</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% include "footer.html.twig" %}
+{% endblock %}

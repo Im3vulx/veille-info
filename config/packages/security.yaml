@@ -1,7 +1,7 @@
 security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
-        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: "auto"
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         user_provider:
@@ -13,22 +13,18 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            lazy: true
             provider: user_provider
             form_login:
                 login_path: app_login
-                check_path: app_login
+                check_path: app_login_check
                 enable_csrf: true
+                csrf_token_id: authenticate
+                default_target_path: app_dashboard
             logout:
                 path: app_logout
-                # where to redirect after logout
-                # target: app_any_route
-
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#the-firewall
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
+            # IMPORTANT pour que Symfony garde la session
+            remember_me:
+                secret: "%kernel.secret%"
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used

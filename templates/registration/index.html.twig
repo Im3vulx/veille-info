@@ -11,7 +11,7 @@
 				Ou
 				<a href="{{ path('app_login') }}">se connecter</a>
 			</p>
-			{{ form_start(form, {'attr': {'class': 'login-form'}}) }}
+			{{ form_start(form, {'attr': {'class': 'login-form', 'data-turbo': 'false'}}) }}
 			{{ form_widget(form) }}
 			{{ form_end(form) }}
 		</div>

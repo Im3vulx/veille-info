@@ -13,29 +13,38 @@
 			<div class="footer-links">
 				<div>
 					<h3>Catégories</h3>
+					{% set footer_categories = [
+						{'name': 'Programmation', 'id': 8},
+						{'name': 'Intelligence Artificielle', 'id': 1},
+						{'name': 'Espace', 'id': 9},
+						{'name': 'Jeux Vidéo', 'id': 11},
+						{'name': 'Handball', 'id': 10}
+					] %}
 					<ul>
-						<li><a href="/category/programming">Programmation</a></li>
-						<li><a href="/category/ai">Intelligence Artificielle</a></li>
-						<li><a href="/category/space">Espace</a></li>
-						<li><a href="/category/gaming">Jeux Vidéo</a></li>
-						<li><a href="/category/handball">Handball</a></li>
+						{% for c in footer_categories %}
+							<li>
+								<a href="{{ path('app_category_show', { id: c.id }) }}">
+									{{ c.name }}
+								</a>
+							</li>
+						{% endfor %}
 					</ul>
 				</div>
 				<div>
 					<h3>Liens Utiles</h3>
 					<ul>
-						<li><a href="{{ path('app_about')}}">À propos</a></li>
-						<li><a href="{{ path('app_contact')}}">Contact</a></li>
-						<li><a href="{{ path('app_politique')}}">Politique de confidentialité</a></li>
-						<li><a href="{{ path('app_conditions_utilisation' )}}">Conditions d'utilisation</a></li>
+						<li><a href="{{path('app_about')}}">À propos</a></li>
+						<li><a href="{{path('app_contact')}}">Contact</a></li>
+						<li><a href="{{path('app_politique')}}">Politique de confidentialité</a></li>
+						<li><a href="{{path('app_conditions_utilisation')}}">Conditions d'utilisation</a></li>
 					</ul>
 				</div>
 				<div>
 					<h3>Compte</h3>
 					<ul>
-						<li><a href="/login">Connexion</a></li>
-						<li><a href="/register">Inscription</a></li>
-						<li><a href="/profile">Mon Profil</a></li>
+						<li><a href="{{ path('app_login') }}">Connexion</a></li>
+						<li><a href="{{ path('app_registration') }}">Inscription</a></li>
+						<li><a href="{{ path('app_dashboard' )}}">Mon Profil</a></li>
 						<li><a href="/bookmarks">Mes Favoris</a></li>
 					</ul>
 				</div>

@@ -18,10 +18,20 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
+        if ($this->getUser()) {
+            return $this->redirectToRoute('app_dashboard');
+        }
+
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
         ]);
+    }
+
+    #[Route(path: '/login/check', name: 'app_login_check')]
+    public function loginCheck(): void
+    {
+        // Ce code ne sera jamais exécuté, Symfony gère le POST automatiquement
     }
 
     #[Route(path: '/logout', name: 'app_logout')]
