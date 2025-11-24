@@ -16,7 +16,7 @@ final class ArticleController extends AbstractController
     #[Route('/', name: 'app_articles')]
     public function index(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, Request $request): Response
     {
-        $categories = $categoryRepository->findChildren();
+        $categories = $categoryRepository->findRoots();
         $selectedCategory = $request->query->get('category');
 
         if ($selectedCategory) {

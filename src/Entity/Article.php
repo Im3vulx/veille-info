@@ -28,6 +28,9 @@ class Article
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageUrl = null;
 
+    #[ORM\Column(length: 512, unique: true, nullable: true)]
+    private ?string $guid = null;
+
     #[ORM\Column]
     private \DateTimeImmutable $createdAt;
 
@@ -37,8 +40,8 @@ class Article
     #[ORM\Column]
     private bool $published;
 
-    #[ORM\Column(length: 255)]
-    private string $authorName;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $authorName = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]
     #[ORM\JoinColumn(nullable: false)]
@@ -112,6 +115,17 @@ class Article
     {
         $this->imageUrl = $imageUrl;
 
+        return $this;
+    }
+
+    public function getGuid(): ?string
+    {
+        return $this->guid;
+    }
+
+    public function setGuid(?string $guid): static
+    {
+        $this->guid = $guid;
         return $this;
     }
 

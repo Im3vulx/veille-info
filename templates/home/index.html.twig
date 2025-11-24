@@ -144,8 +144,10 @@
 								<p class="article-summary">{{ article.summary|length > 150 ? article.summary|slice(0, 150) ~ '...' : article.summary }}</p>
 
 								<div class="article-footer">
-									<span class="article-author">Par
-										{{ article.authorName }}</span>
+									{% if article.authorName is not empty %}
+										<span class="article-author">Par
+											{{ article.authorName }}</span>
+									{% endif %}
 									<a href="{{ path('app_article_show', {id: article.id}) }}" class="read-more">
 										Lire la suite
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewbox="0 0 16 16">
