@@ -21,6 +21,10 @@ final class HomeController extends AbstractController
 
         $categories = $categoryRepository->findRoots();
 
+        $allowedSlugs = ['espace', 'handball', 'ai', 'jeux-video', 'programmation'];
+
+        $categories = array_filter($categories, fn($cat) => in_array($cat->getSlug(), $allowedSlugs));
+
         return $this->render('home/index.html.twig', [
             'latestArticles' => $latestArticles,
             'categories' => $categories,
