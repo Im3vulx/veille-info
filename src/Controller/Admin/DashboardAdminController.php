@@ -5,7 +5,6 @@ namespace App\Controller\Admin;
 use App\Entity\User;
 use App\Entity\Article;
 use App\Entity\Category;
-use App\Service\SiteSettings;
 use App\Form\AdminSettingsType;
 use App\Repository\UserRepository;
 use App\Repository\ArticleRepository;
@@ -14,8 +13,11 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Service\SiteSettings;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/admin')]
 final class DashboardAdminController extends AbstractController
