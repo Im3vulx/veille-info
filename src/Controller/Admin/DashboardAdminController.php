@@ -14,9 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Service\SiteSettings;
-use Symfony\Component\Form\Extension\Core\Type\ColorType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/admin')]
@@ -98,7 +95,7 @@ final class DashboardAdminController extends AbstractController
 
     #[Route('/settings', name: 'app_admin_settings')]
     #[IsGranted('ROLE_ADMIN')]
-    public function settings(Request $request, SiteSettings $siteSettings): Response
+    public function settings(Request $request): Response
     {
         // Données par défaut (simule votre useState initial)
         // Dans une vraie app, récupérez ceci depuis la base de données
