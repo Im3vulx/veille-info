@@ -15,4 +15,26 @@ class ArticleRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Article::class);
     }
+
+    public function countPublished(): int
+    {
+        return (int) $this->createQueryBuilder('a')
+            ->select('COUNT(a.id)')
+            ->where('a.published = :status')
+            ->setParameter('status', true)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countArticlesByCategory(int $limit = 5): array
+    {
+        return $this->createQueryBuilder('a')
+            ->select('c.id AS category_id, c.name AS category_name, COUNT(a.id) AS article_count')
+            ->join('a.category', 'c')
+            ->groupBy('c.id')
+            ->orderBy('article_count', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

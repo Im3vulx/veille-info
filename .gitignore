@@ -27,3 +27,6 @@
 ###> symfonycasts/sass-bundle ###
 /public/assets/
 ###< symfonycasts/sass-bundle ###
+
+###> info site ###
+info.md

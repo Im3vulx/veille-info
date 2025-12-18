@@ -1,0 +1,173 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block admin_content %}
+	{# IMPORTANT: On enveloppe le contenu dans la même ID que dans le layout #}
+	<turbo-frame id="admin-content">
+		<section id="settings" data-admindashboard-target="section" data-section="settings" class="dashboard-section active">
+			<h2>Paramètres</h2>
+
+			<div
+				data-controller="settingtabs">
+
+				{# --- Messages Flash --- #}
+				{% for message in app.flashes('success') %}
+					<div class="flash-success">
+						{{ message }}
+					</div>
+				{% endfor %}
+
+				{# --- Navigation des Onglets --- #}
+				<div class="tabs-nav">
+					<nav>
+						{% set tabs = [
+                            {'id': 'general', 'name': 'Général', 'icon': 'globe'},
+                            {'id': 'email', 'name': 'Email', 'icon': 'mail'},
+                            {'id': 'security', 'name': 'Sécurité', 'icon': 'shield'},
+                            {'id': 'content', 'name': 'Contenu', 'icon': 'database'},
+                            {'id': 'appearance', 'name': 'Apparence', 'icon': 'palette'},
+                            {'id': 'notifications', 'name': 'Notifications', 'icon': 'bell'}
+                        ] %}
+
+						{% for tab in tabs %}
+							<button type="button" data-settingtabs-target="tab" data-action="click->settingtabs#switch" data-tab-id="{{ tab.id }}" class="tab-button">
+								{% if tab.icon == 'globe' %}
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+								{% endif %}
+								{% if tab.icon == 'mail' %}
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+								{% endif %}
+								{% if tab.icon == 'shield' %}
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+								{% endif %}
+								{% if tab.icon == 'database' %}
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+								{% endif %}
+								{% if tab.icon == 'palette' %}
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.01 17.461 2 12 2z"/></svg>
+								{% endif %}
+								{% if tab.icon == 'bell' %}
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+								{% endif %}
+								{{ tab.name }}
+							</button>
+						{% endfor %}
+					</nav>
+				</div>
+
+				{# --- Début du Formulaire --- #}
+				{{ form_start(form, {'attr': {'class': 'settings-form'}}) }}
+
+				{# Macro pour les Toggle Switches (Cases à cocher stylisées) #}
+				{% macro toggle_row(field, title, description) %}
+					<div class="toggle-row">
+						<div>
+							<h4>{{ title }}</h4>
+							<p>{{ description }}</p>
+						</div>
+						<label class="toggle-switch">
+							{{ form_widget(field, {'attr': {'class': 'sr-only peer'}}) }}
+							<div class="toggle-slider"></div>
+						</label>
+					</div>
+				{% endmacro %}
+				{% import _self as macros %}
+
+				{# --- Panel: Général --- #}
+				<div data-settingtabs-target="panel" data-panel-id="general" class="tab-panel form-grid">
+					<div class="form-grid grid-2">
+						{{ form_row(form.siteName) }}
+						{{ form_row(form.siteUrl) }}
+					</div>
+					{{ form_row(form.siteDescription) }}
+					<div class="form-grid grid-2">
+						{{ form_row(form.adminEmail) }}
+						{{ form_row(form.timezone) }}
+					</div>
+				</div>
+
+				{# --- Panel: Email --- #}
+				<div data-settingtabs-target="panel" data-panel-id="email" class="tab-panel form-grid">
+					<div class="form-grid grid-2">
+						{{ form_row(form.smtpHost) }}
+						{{ form_row(form.smtpPort) }}
+					</div>
+					<div class="form-grid grid-2">
+						{{ form_row(form.smtpUsername) }}
+						{{ form_row(form.smtpPassword) }}
+					</div>
+					<div class="form-grid grid-2">
+						{{ form_row(form.fromEmail) }}
+						{{ form_row(form.fromName) }}
+					</div>
+				</div>
+
+				{# --- Panel: Sécurité --- #}
+				<div data-settingtabs-target="panel" data-panel-id="security" class="tab-panel space-y-6">
+					<div class="space-y-4">
+						{{ macros.toggle_row(form.enableRegistration, 'Autoriser les inscriptions', 'Permettre aux nouveaux utilisateurs de créer un compte') }}
+						{{ macros.toggle_row(form.requireEmailVerification, 'Vérification email obligatoire', 'Exiger la vérification de l\'email lors de l\'inscription') }}
+						{{ macros.toggle_row(form.enableTwoFactor, 'Authentification à deux facteurs', 'Activer la 2FA pour les administrateurs') }}
+					</div>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+						{{ form_row(form.sessionTimeout) }}
+						{{ form_row(form.maxLoginAttempts) }}
+					</div>
+				</div>
+
+				{# --- Panel: Contenu --- #}
+				<div data-settingtabs-target="panel" data-panel-id="content" class="tab-panel space-y-6">
+					<div class="space-y-4">
+						{{ macros.toggle_row(form.enableComments, 'Activer les commentaires', 'Permettre aux utilisateurs de commenter les articles') }}
+						{{ macros.toggle_row(form.moderateComments, 'Modération des commentaires', 'Approuver manuellement les commentaires avant publication') }}
+						{{ macros.toggle_row(form.enableBookmarks, 'Système de favoris', 'Permettre aux utilisateurs de sauvegarder des articles') }}
+						{{ macros.toggle_row(form.enableNewsletter, 'Newsletter', 'Activer le système d\'abonnement à la newsletter') }}
+					</div>
+					<div>
+						{{ form_row(form.articlesPerPage) }}
+					</div>
+				</div>
+
+				{# --- Panel: Apparence --- #}
+				<div data-settingtabs-target="panel" data-panel-id="appearance" class="tab-panel space-y-6">
+					<div class="appearance">
+						{{ form_row(form.primaryColor) }}
+						{{ form_row(form.secondaryColor) }}
+						{{ form_row(form.accentColor) }}
+					</div>
+					{{ macros.toggle_row(form.enableDarkMode, 'Activer le mode sombre', 'Permettre aux utilisateurs de basculer en mode sombre') }}
+					{{ form_row(form.defaultTheme) }}
+				</div>
+
+				{# --- Panel: Notifications --- #}
+				<div data-settingtabs-target="panel" data-panel-id="notifications" class="tab-panel space-y-6">
+					<div class="space-y-4">
+						{{ macros.toggle_row(form.emailNotifications, 'Notifications par email', 'Activer l\'envoi de notifications par email') }}
+						{{ macros.toggle_row(form.newUserNotifications, 'Nouveaux utilisateurs', 'Notifier lors de nouvelles inscriptions') }}
+						{{ macros.toggle_row(form.newCommentNotifications, 'Nouveaux commentaires', 'Notifier lors de nouveaux commentaires') }}
+						{{ macros.toggle_row(form.systemAlerts, 'Alertes système', 'Recevoir les alertes de sécurité et maintenance') }}
+					</div>
+					<div class="info-box">
+						<h4>Types de notifications disponibles</h4>
+						<ul>
+							<li>• Nouveaux articles publiés</li>
+							<li>• Commentaires en attente de modération</li>
+							<li>• Inscriptions d'utilisateurs</li>
+							<li>• Erreurs système et maintenance</li>
+							<li>• Statistiques hebdomadaires</li>
+						</ul>
+					</div>
+				</div>
+
+				{# --- Bouton Sauvegarder Global --- #}
+				<div class="form-footer">
+					<button type="submit" class="submit-btn">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+						Sauvegarder tout
+					</button>
+				</div>
+
+				{{ form_end(form) }}
+			</div>
+		</section>
+	</turbo-frame>
+{% endblock %}

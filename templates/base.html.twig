@@ -51,7 +51,7 @@
 								<div class="dropdown-menu">
 									<a href="{{ path('app_dashboard') }}" class="dropdown-link">Mon profil</a>
 									{% if is_granted('ROLE_ADMIN') %}
-										<a href="{{ path('app_admin') }}" class="dropdown-link">Admin Dashboard</a>
+										<a href="{{ path('app_dashboard_admin') }}" class="dropdown-link">Admin Dashboard</a>
 									{% endif %}
 									<a href="{{ path('app_logout') }}" class="dropdown-link">Déconnexion</a>
 								</div>

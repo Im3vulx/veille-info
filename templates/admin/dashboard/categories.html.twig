@@ -1,0 +1,92 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block admin_content %}
+	<turbo-frame id="admin-content">
+		<section id="category" data-controller="admincategories" data-admindashboard-target="section" data-section="category" class="dashboard-section">
+			<h2>Gestion des categories</h2>
+			<div class="filters">
+				<div class="filter-item">
+					<input data-admincategories-target="search" data-action="input->admincategories#filter" type="text" placeholder="Rechercher...">
+
+					<button data-action="admincategories#openModal">
+						Nouvelle catégorie
+					</button>
+				</div>
+			</div>
+
+			<div id="categoriesList" data-admincategories-target="list">
+				{% for c in categories %}
+					<div class="card" data-category-name="{{ c.name|lower }}">
+						<div class="top">
+							<div>
+								<h3>{{ c.name }}</h3>
+								<p>/{{ c.slug }}</p>
+							</div>
+							<div>
+								<button data-action="admincategories#edit" data-id="{{ c.id }}" data-name="{{ c.name }}" data-slug="{{ c.slug }}" data-icon="{{ c.iconName }}" class="text-blue-600">
+									<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 640 640"><path d="M64 192C64 156.7 92.7 128 128 128L512 128C547.3 128 576 156.7 576 192L576 448C576 483.3 547.3 512 512 512L128 512C92.7 512 64 483.3 64 448L64 192zM128 224L128 288C128 305.7 142.3 320 160 320L480 320C497.7 320 512 305.7 512 288L512 224C512 206.3 497.7 192 480 192L160 192C142.3 192 128 206.3 128 224zM152 384C138.7 384 128 394.7 128 408C128 421.3 138.7 432 152 432L200 432C213.3 432 224 421.3 224 408C224 394.7 213.3 384 200 384L152 384zM280 384C266.7 384 256 394.7 256 408C256 421.3 266.7 432 280 432L328 432C341.3 432 352 421.3 352 408C352 394.7 341.3 384 328 384L280 384z"/></svg>
+								</button>
+								<a href="{{ path('admin_categories_delete', { id: c.id }) }}" onclick="return confirm('Supprimer ?')" class="text-red-600">
+									<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 640 640"><path d="M232.7 69.9C237.1 56.8 249.3 48 263.1 48L377 48C390.8 48 403 56.8 407.4 69.9L416 96L512 96C529.7 96 544 110.3 544 128C544 145.7 529.7 160 512 160L128 160C110.3 160 96 145.7 96 128C96 110.3 110.3 96 128 96L224 96L232.7 69.9zM128 208L512 208L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 208zM216 272C202.7 272 192 282.7 192 296L192 488C192 501.3 202.7 512 216 512C229.3 512 240 501.3 240 488L240 296C240 282.7 229.3 272 216 272zM320 272C306.7 272 296 282.7 296 296L296 488C296 501.3 306.7 512 320 512C333.3 512 344 501.3 344 488L344 296C344 282.7 333.3 272 320 272zM424 272C410.7 272 400 282.7 400 296L400 488C400 501.3 410.7 512 424 512C437.3 512 448 501.3 448 488L448 296C448 282.7 437.3 272 424 272z"/></svg>
+								</a>
+							</div>
+						</div>
+						<div class="bottom">
+							<div>
+								Icône :
+								{{ c.iconName }}
+							</div>
+							<div>
+								– ID :
+								{{ c.id }}
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+			<!-- MODAL -->
+			<div data-admincategories-target="modal" class="background hidden">
+				<div class="modal">
+					<div class="top">
+						<h3 class="text-lg font-bold mb-4" data-admincategories-target="modalTitle">
+							Nouvelle catégorie
+						</h3>
+						<button data-action="admincategories#closeModal">
+							<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 640 640"><path d="M183.1 137.4C170.6 124.9 150.3 124.9 137.8 137.4C125.3 149.9 125.3 170.2 137.8 182.7L275.2 320L137.9 457.4C125.4 469.9 125.4 490.2 137.9 502.7C150.4 515.2 170.7 515.2 183.2 502.7L320.5 365.3L457.9 502.6C470.4 515.1 490.7 515.1 503.2 502.6C515.7 490.1 515.7 469.8 503.2 457.3L365.8 320L503.1 182.6C515.6 170.1 515.6 149.8 503.1 137.3C490.6 124.8 470.3 124.8 457.8 137.3L320.5 274.7L183.1 137.4z"/></svg>
+						</button>
+					</div>
+
+					<form data-admincategories-target="form" method="POST">
+						<input type="hidden" name="csrf_token_category" value="{{ csrf_token('category') }}">
+
+						<label>Nom *</label>
+						<input type="text" name="name" data-admincategories-target="name" data-action="input->admincategories#updateSlug" class="border rounded w-full p-2 mb-4" required>
+
+						<label>Slug *</label>
+						<input type="text" name="slug" data-admincategories-target="slug" class="border rounded w-full p-2 mb-4" required>
+
+						<label>Icône</label>
+						<select name="iconName" data-admincategories-target="icon" class="border rounded w-full p-2 mb-4">
+							<option>Code</option>
+							<option>Brain</option>
+							<option>Rocket</option>
+							<option>Gamepad2</option>
+							<option>Dribbble</option>
+						</select>
+
+						<div>
+							<button type="button" data-action="admincategories#closeModal">
+								Annuler
+							</button>
+
+							<button>
+								Enregistrer
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</turbo-frame>
+{% endblock %}
