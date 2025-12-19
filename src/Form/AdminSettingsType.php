@@ -20,10 +20,10 @@ class AdminSettingsType extends AbstractType
     {
         // --- Général ---
         $builder
-            ->add('siteName', TextType::class, ['label' => 'Nom du site'])
-            ->add('siteUrl', UrlType::class, ['label' => 'URL du site'])
-            ->add('siteDescription', TextareaType::class, ['label' => 'Description du site', 'attr' => ['rows' => 3]])
-            ->add('adminEmail', EmailType::class, ['label' => 'Email administrateur'])
+            ->add('siteName', TextType::class, ['label' => 'Nom du site', 'required' => false])
+            ->add('siteUrl', UrlType::class, ['label' => 'URL du site', 'required' => false])
+            ->add('siteDescription', TextareaType::class, ['label' => 'Description du site', 'attr' => ['rows' => 3], 'required' => false])
+            ->add('adminEmail', EmailType::class, ['label' => 'Email administrateur', 'required' => false])
             ->add('timezone', ChoiceType::class, [
                 'label' => 'Fuseau horaire',
                 'choices' => [
@@ -32,24 +32,25 @@ class AdminSettingsType extends AbstractType
                     'America/New_York' => 'America/New_York',
                     'Asia/Tokyo' => 'Asia/Tokyo',
                 ],
+                'required' => false,
             ]);
 
         // --- Email ---
         $builder
-            ->add('smtpHost', TextType::class, ['label' => 'Serveur SMTP'])
-            ->add('smtpPort', IntegerType::class, ['label' => 'Port SMTP'])
+            ->add('smtpHost', TextType::class, ['label' => 'Serveur SMTP', 'required' => false])
+            ->add('smtpPort', IntegerType::class, ['label' => 'Port SMTP', 'required' => false])
             ->add('smtpUsername', TextType::class, ['label' => 'Nom d\'utilisateur SMTP', 'required' => false])
-            ->add('smtpPassword', TextType::class, ['label' => 'Mot de passe SMTP', 'required' => false]) // Use PasswordType in real app
-            ->add('fromEmail', EmailType::class, ['label' => 'Email expéditeur'])
-            ->add('fromName', TextType::class, ['label' => 'Nom expéditeur']);
+            ->add('smtpPassword', TextType::class, ['label' => 'Mot de passe SMTP', 'required' => false])
+            ->add('fromEmail', EmailType::class, ['label' => 'Email expéditeur', 'required' => false])
+            ->add('fromName', TextType::class, ['label' => 'Nom expéditeur', 'required' => false]);
 
         // --- Sécurité ---
         $builder
             ->add('enableRegistration', CheckboxType::class, ['label' => 'Autoriser les inscriptions', 'required' => false])
             ->add('requireEmailVerification', CheckboxType::class, ['label' => 'Vérification email obligatoire', 'required' => false])
             ->add('enableTwoFactor', CheckboxType::class, ['label' => 'Authentification à deux facteurs', 'required' => false])
-            ->add('sessionTimeout', IntegerType::class, ['label' => 'Durée de session (heures)'])
-            ->add('maxLoginAttempts', IntegerType::class, ['label' => 'Tentatives de connexion max']);
+            ->add('sessionTimeout', IntegerType::class, ['label' => 'Durée de session (heures)', 'required' => false])
+            ->add('maxLoginAttempts', IntegerType::class, ['label' => 'Tentatives de connexion max', 'required' => false]);
 
         // --- Contenu ---
         $builder
@@ -65,12 +66,18 @@ class AdminSettingsType extends AbstractType
                     '15 articles' => 15,
                     '20 articles' => 20,
                     '25 articles' => 25,
-                ]
+                ],
+                'required' => false
             ]);
 
         // --- Apparence ---
         $builder
-            ->add('primaryColor', ColorType::class, ['label' => 'Couleur primaire'])
+            ->add('primaryColor', ColorType::class, [
+                'label' => 'Couleur principale',
+                'attr' => [
+                    'style' => 'height: 2.5rem; width: 4rem; cursor: pointer; border-radius: 0.5rem; border-width: 1px;',
+                ],
+            ])
             ->add('secondaryColor', ColorType::class, ['label' => 'Couleur secondaire'])
             ->add('accentColor', ColorType::class, ['label' => 'Couleur d\'accent'])
             ->add('enableDarkMode', CheckboxType::class, ['label' => 'Activer le mode sombre', 'required' => false])
@@ -93,8 +100,6 @@ class AdminSettingsType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
-            // 'data_class' => SettingsEntity::class, // Décommentez si vous liez à une entité
-        ]);
+        $resolver->setDefaults([]);
     }
 }

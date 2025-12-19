@@ -1,0 +1,16 @@
+<div data-settingtabs-target="panel" data-panel-id="email" class="tab-panel form-grid">
+	<div class="form-row">
+		<div class="form-grid grid-2">
+			{{ form_row(form.smtpHost) }}
+			{{ form_row(form.smtpPort) }}
+		</div>
+		<div class="form-grid grid-2">
+			{{ form_row(form.smtpUsername) }}
+			{{ form_row(form.smtpPassword) }}
+		</div>
+		<div class="form-grid grid-2">
+			{{ form_row(form.fromEmail) }}
+			{{ form_row(form.fromName) }}
+		</div>
+	</div>
+</div>

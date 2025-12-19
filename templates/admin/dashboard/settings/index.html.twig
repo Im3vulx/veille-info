@@ -1,0 +1,72 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block admin_content %}
+	{% import 'admin/macros/_settings_macros.html.twig' as macros %}
+	<turbo-frame id="admin-content">
+		<section id="settings" data-admindashboard-target="section" class="dashboard-section active">
+			<h2>Paramètres</h2>
+			<div data-controller="settingtabs">
+				{% for message in app.flashes('success') %}
+					<div class="flash-success">
+						{{ message }}
+					</div>
+				{% endfor %}
+
+				<div class="tabs-nav">
+					<nav>
+						{% set tabs = [
+                            {'id': 'general', 'name': 'Général', 'icon': 'globe'},
+                            {'id': 'email', 'name': 'Email', 'icon': 'mail'},
+                            {'id': 'security', 'name': 'Sécurité', 'icon': 'shield'},
+                            {'id': 'content', 'name': 'Contenu', 'icon': 'database'},
+                            {'id': 'appearance', 'name': 'Apparence', 'icon': 'palette'},
+                            {'id': 'notifications', 'name': 'Notifications', 'icon': 'bell'}
+                        ] %}
+
+						{% for tab in tabs %}
+							<button type="button" data-settingtabs-target="tab" data-action="click->settingtabs#switch" data-tab-id="{{ tab.id }}" class="tab-button">
+								{% if tab.icon == 'globe' %}
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+								{% endif %}
+								{% if tab.icon == 'mail' %}
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+								{% endif %}
+								{% if tab.icon == 'shield' %}
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+								{% endif %}
+								{% if tab.icon == 'database' %}
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+								{% endif %}
+								{% if tab.icon == 'palette' %}
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.01 17.461 2 12 2z"/></svg>
+								{% endif %}
+								{% if tab.icon == 'bell' %}
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+								{% endif %}
+								{{ tab.name }}
+							</button>
+						{% endfor %}
+					</nav>
+				</div>
+
+				{{ form_start(form, {'attr': {'class': 'settings-form'}}) }}
+
+				{{ include('admin/dashboard/settings/_tabs/_general.html.twig', {form: form}) }}
+				{{ include('admin/dashboard/settings/_tabs/_email.html.twig', {form: form}) }}
+				{{ include('admin/dashboard/settings/_tabs/_security.html.twig', {form: form}) }}
+				{{ include('admin/dashboard/settings/_tabs/_content.html.twig', {form: form}) }}
+				{{ include('admin/dashboard/settings/_tabs/_appearance.html.twig', {form: form}) }}
+				{{ include('admin/dashboard/settings/_tabs/_notifications.html.twig', {form: form}) }}
+
+				<div class="form-footer">
+					<button type="submit" class="submit-btn">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+						Sauvegarder tout
+					</button>
+				</div>
+
+				{{ form_end(form) }}
+			</div>
+		</section>
+	</turbo-frame>
+{% endblock %}

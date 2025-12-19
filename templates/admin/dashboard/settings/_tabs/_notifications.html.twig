@@ -1,0 +1,20 @@
+{% import 'admin/macros/_settings_macros.html.twig' as macros %}
+
+<div data-settingtabs-target="panel" data-panel-id="notifications" class="tab-panel space-y-6">
+	<div class="space-y-4">
+		{{ macros.toggle_row(form.emailNotifications, 'Notifications par email', 'Activer l\'envoi de notifications par email') }}
+        {{ macros.toggle_row(form.newUserNotifications, 'Nouveaux utilisateurs', 'Notifier lors de nouvelles inscriptions') }}
+        {{ macros.toggle_row(form.newCommentNotifications, 'Nouveaux commentaires', 'Notifier lors de nouveaux commentaires') }}
+        {{ macros.toggle_row(form.systemAlerts, 'Alertes système', 'Recevoir les alertes de sécurité et maintenance') }}
+    </div>
+    <div class="info-box">
+        <h4>Types de notifications disponibles</h4>
+        <ul>
+            <li>• Nouveaux articles publiés</li>
+            <li>• Commentaires en attente de modération</li>
+            <li>• Inscriptions d'utilisateurs</li>
+            <li>• Erreurs système et maintenance</li>
+            <li>• Statistiques hebdomadaires</li>
+        </ul>
+    </div>
+</div>

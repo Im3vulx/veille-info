@@ -1,0 +1,13 @@
+{% import 'admin/macros/_settings_macros.html.twig' as macros %}
+
+<div data-settingtabs-target="panel" data-panel-id="content" class="tab-panel space-y-6">
+	<div class="space-y-4">
+		{{ macros.toggle_row(form.enableComments, 'Activer les commentaires', 'Permettre aux utilisateurs de commenter les articles') }}
+		{{ macros.toggle_row(form.moderateComments, 'Modération des commentaires', 'Approuver manuellement les commentaires avant publication') }}
+		{{ macros.toggle_row(form.enableBookmarks, 'Système de favoris', 'Permettre aux utilisateurs de sauvegarder des articles') }}
+		{{ macros.toggle_row(form.enableNewsletter, 'Newsletter', 'Activer le système d\'abonnement à la newsletter') }}
+    </div>
+    <div class="form-row">
+        {{ form_row(form.articlesPerPage) }}
+    </div>
+</div>

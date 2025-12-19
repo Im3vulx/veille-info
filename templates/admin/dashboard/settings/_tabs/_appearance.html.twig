@@ -1,0 +1,15 @@
+{% import 'admin/macros/_settings_macros.html.twig' as macros %}
+
+<div data-settingtabs-target="panel" data-panel-id="appearance" class="tab-panel space-y-6">
+	<div class="form-row">
+		<div class="appearance">
+			{{ form_row(form.primaryColor) }}
+			{{ form_row(form.secondaryColor) }}
+			{{ form_row(form.accentColor) }}
+		</div>
+	</div>
+	{{ macros.toggle_row(form.enableDarkMode, 'Activer le mode sombre', 'Permettre aux utilisateurs de basculer en mode sombre') }}
+	<div class="form-row">
+		{{ form_row(form.defaultTheme) }}
+	</div>
+</div>

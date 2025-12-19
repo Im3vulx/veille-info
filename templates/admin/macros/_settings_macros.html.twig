@@ -1,0 +1,12 @@
+{% macro toggle_row(field, title, description) %}
+	<div class="toggle-row">
+		<div>
+			<h4>{{ title }}</h4>
+			<p>{{ description }}</p>
+		</div>
+		<label class="toggle-switch">
+			{{ form_widget(field, {'attr': {'class': 'sr-only peer'}}) }}
+			<div class="toggle-slider"></div>
+		</label>
+	</div>
+{% endmacro %}

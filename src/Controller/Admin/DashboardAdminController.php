@@ -9,12 +9,12 @@ use App\Form\AdminSettingsType;
 use App\Repository\UserRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
+use App\Service\SiteSettings;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/admin')]
 final class DashboardAdminController extends AbstractController
@@ -94,49 +94,52 @@ final class DashboardAdminController extends AbstractController
     }
 
     #[Route('/settings', name: 'app_admin_settings')]
-    #[IsGranted('ROLE_ADMIN')]
-    public function settings(Request $request): Response
+    public function settings(Request $request, SiteSettings $siteSettings): Response
     {
-        // Données par défaut (simule votre useState initial)
-        // Dans une vraie app, récupérez ceci depuis la base de données
-        $defaultData = [
-            'siteName' => 'Neurogameron',
-            'siteUrl' => 'https://neurogameron.fr',
-            'siteDescription' => 'Votre plateforme de veille informatique',
-            'adminEmail' => 'admin@neurogameron.fr',
-            'timezone' => 'Europe/Paris',
-            'smtpHost' => 'smtp.gmail.com',
-            'smtpPort' => 587,
-            'fromEmail' => 'noreply@neurogameron.fr',
-            'fromName' => 'Neurogameron',
-            'enableRegistration' => true,
-            'articlesPerPage' => 10,
-            'primaryColor' => '#4f46e5',
-            'secondaryColor' => '#7e22ce',
-            'accentColor' => '#0d9488',
-            'enableDarkMode' => true,
-            'defaultTheme' => 'light',
-            'emailNotifications' => true,
-            'newUserNotifications' => true,
-            'newCommentNotifications' => true,
-            'systemAlerts' => true
+        $data = [
+            "siteName" => $siteSettings->get('siteName', "Neurogameron"),
+            "siteUrl" => $siteSettings->get('siteUrl', "http://localhost:8000"),
+            "siteDescription" => $siteSettings->get('siteDescription', "Bienvenue sur Neurogameron, votre source ultime pour tout ce qui concerne les jeux vidéo et la technologie."),
+            "adminEmail" => $siteSettings->get('adminEmail', 'admin@neurogameron.fr'),
+            "timezone" => $siteSettings->get('timezone', 'Europe/Paris'),
+            "smtpHost" => $siteSettings->get('smtpHost', null),
+            "smtpPort" => $siteSettings->get('smtpPort', null),
+            "smtpUsername" => $siteSettings->get('smtpUsername', null),
+            "smtpPassword" => $siteSettings->get('smtpPassword', null),
+            "fromEmail" => $siteSettings->get('fromEmail', null),
+            "fromName" => $siteSettings->get('fromName', null),
+            "enableRegistration" => $siteSettings->get('enableRegistration', false),
+            "articlesPerPage" => $siteSettings->get('articlesPerPage', 10),
+            'primaryColor' => $siteSettings->get('primaryColor', '#1e3a8a'),
+            "secondaryColor" => $siteSettings->get('secondaryColor', '#2563eb'),
+            "accentColor" => $siteSettings->get('accentColor', '#3b82f6'),
+            "enableDarkMode" => $siteSettings->get('enableDarkMode', false),
+            "defaultTheme" => $siteSettings->get('defaultTheme', 'dark'),
+            "emailNotifications" => $siteSettings->get('emailNotifications', true),
+            "newUserNotifications" => $siteSettings->get('newUserNotifications', true),
+            "newCommentNotifications" => $siteSettings->get('newCommentNotifications', true),
+            "systemAlerts" => $siteSettings->get('systemAlerts', true),
+            "requireEmailVerification" => $siteSettings->get('requireEmailVerification', false),
+            "enableTwoFactor" => $siteSettings->get('enableTwoFactor', false),
+            "sessionTimeout" => $siteSettings->get('sessionTimeout', 24),
+            "maxLoginAttempts" => $siteSettings->get('maxLoginAttempts', 5),
+            "enableComments" => $siteSettings->get('enableComments', true),
+            "moderateComments" => $siteSettings->get('moderateComments', true),
+            "enableBookmarks" => $siteSettings->get('enableBookmarks', true),
+            "enableNewsletter" => $siteSettings->get('enableNewsletter', true),
         ];
 
-        $form = $this->createForm(AdminSettingsType::class, $defaultData);
+        $form = $this->createForm(AdminSettingsType::class, $data);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $form->getData();
+            $siteSettings->set($form->getData());
 
-            // TODO: Sauvegarder $data en base de données ou fichier YAML
-
-            $this->addFlash('success', 'Paramètres sauvegardés avec succès !');
-
-            // On redirige pour éviter la resoumission du formulaire
+            $this->addFlash('success', 'Paramètres mis à jour avec succès !');
             return $this->redirectToRoute('app_admin_settings');
         }
 
-        return $this->render('admin/dashboard/settings.html.twig', [
+        return $this->render('admin/dashboard/settings/index.html.twig', [
             'form' => $form->createView(),
         ]);
     }
