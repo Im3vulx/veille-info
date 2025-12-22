@@ -17,9 +17,6 @@ import './styles/app.scss';
 
     if (savedTheme === 'dark' || savedTheme === 'light') {
         root.classList.toggle('dark', savedTheme === 'dark');
-    } else if (window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        root.classList.add('dark');
     }
 
     document.addEventListener('DOMContentLoaded', function () {
