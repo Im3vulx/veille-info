@@ -20,17 +20,17 @@
 			{% endif %}
 
 			{% if app.user %}
-				<div
-					class="login-info">
-					{# Vous êtes connecté en tant que {{ app.user.userIdentifier }},  #}
-					Vous êtes connecté en tant que,
+				<div class="login-info">
+					Vous êtes connecté en tant que
+					{{ app.user.userIdentifier }},
 					<a href="{{ path('app_logout') }}">Déconnexion</a>
 				</div>
 			{% endif %}
 
-			<form method="post" action="{{ path('app_login_check' )}}" class="login-form" data-turbo="false">
-				<label for="username">Adresse email</label>
-				<input type="email" name="_username" id="username" value="{{ last_username }}" required autocomplete="email">
+			<form method="post" action="{{ path('app_login_check') }}" class="login-form" data-turbo="false">
+
+				<label for="username">Email ou Nom d'utilisateur</label>
+				<input type="text" name="_username" id="username" value="{{ last_username }}" required autocomplete="username" autofocus>
 
 				<label for="password">Mot de passe</label>
 				<input type="password" name="_password" id="password" required autocomplete="current-password">
