@@ -10,6 +10,14 @@
   padding: 0;
 }
 
+.icon-moon {
+  display: inline-block;
+}
+
+.icon-sun {
+  display: none;
+}
+
 :root {
   /* Thème clair (par défaut) */
   --bg-color: #f9fafb;
@@ -57,6 +65,13 @@
     --flash-success-bg: #064e3b;
     --flash-success-text: #86efac;
     --flash-success-border: #6ee7b7;
+    .icon-moon {
+      display: none;
+    }
+
+    .icon-sun {
+      display: inline-block;
+    }
   }
 }
 
