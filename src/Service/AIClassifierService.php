@@ -2,10 +2,10 @@
 
 namespace App\Service;
 
+use App\Entity\Category;
+use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
-use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\Category;
 
 class AIClassifierService
 {
@@ -15,43 +15,49 @@ class AIClassifierService
         private HttpClientInterface $client,
         private string $groqApiKey,
         private LoggerInterface $logger,
-        private EntityManagerInterface $em
+        private EntityManagerInterface $em,
+        private string $googleApiKey,
     ) {}
 
     /**
-     * Classify an article into one of the existing categories.
-     * IMPORTANT: this method will only return slugs that already exist in the DB.
-     * Return format: ['category' => string|null, 'subcategory' => string|null, 'is_promo' => bool]
+     * Retourne UNIQUEMENT un slug existant
+     * @param string $title
+     * @param string $content Le contenu complet de l'article (ou résumé si pas dispo)
      */
-    public function classify(string $title, string $summary): array
+    public function classify(string $title, string $content): array
     {
-        // build allowed slugs dynamically from DB (white list)
-        $rows = $this->em->getRepository(Category::class)->createQueryBuilder('c')
+        $rows = $this->em->getRepository(Category::class)
+            ->createQueryBuilder('c')
             ->select('c.slug')
             ->getQuery()
             ->getScalarResult();
 
         $allowed = array_map(fn($r) => strtolower($r['slug']), $rows);
+
         if (empty($allowed)) {
-            // fallback minimal list
-            $allowed = ['programmation', 'ai', 'jeux-video', 'espace', 'handball', 'autres'];
+            return ['category' => null, 'subcategory' => null, 'is_promo' => false];
         }
 
-        $prompt = "Tu es un modèle de classification.\n" .
-            "Choisis une seule catégorie parmi la liste suivante (slugs) : " . implode(', ', $allowed) . ".\n" .
-            "Renvoie uniquement le slug exact si tu es sûr, sinon renvoie 'autres'.\n\n" .
-            "Titre : $title\nRésumé : $summary\n";
+        $prompt = <<<TXT
+Choisis UNE catégorie parmi cette liste (slugs uniquement) :
+{$this->list($allowed)}
+
+Renvoie uniquement le slug exact ou "autres".
+
+Titre : $title
+Contenu : $content
+TXT;
 
         try {
             $response = $this->client->request('POST', $this->apiUrl, [
                 'headers' => [
-                    'Authorization' => 'Bearer ' . $this->groqApiKey,
-                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Bearer ' . $this->googleApiKey,
+                    'Content-Type'  => 'application/json',
                 ],
                 'json' => [
                     'model' => 'openai/gpt-oss-safeguard-20b',
                     'messages' => [
-                        ['role' => 'system', 'content' => 'Tu es un classificateur d’articles, renvoie uniquement le slug (ou "autres").'],
+                        ['role' => 'system', 'content' => 'Classificateur strict'],
                         ['role' => 'user', 'content' => $prompt]
                     ],
                     'temperature' => 0.0,
@@ -60,32 +66,33 @@ class AIClassifierService
             ]);
 
             $data = json_decode($response->getContent(false), true);
-            $raw = trim(strtolower($data['choices'][0]['message']['content'] ?? ''));
+            $raw = strtolower(trim($data['choices'][0]['message']['content'] ?? ''));
 
-            // sometimes the model returns JSON or additional text — try to extract slug-like token
-            if (preg_match('/([a-z0-9\-_ ]+)/i', $raw, $m)) {
-                $candidate = strtolower(trim($m[1]));
-            } else {
-                $candidate = $raw;
-            }
+            $raw = str_replace(' ', '-', $raw);
 
-            // normalize candidate (replace spaces by '-')
-            $candidate = str_replace(' ', '-', $candidate);
+            $category = in_array($raw, $allowed, true) ? $raw : null;
 
-            $category = in_array($candidate, $allowed) ? $candidate : null;
+            $isPromo = preg_match(
+                '#\b(black friday|promo|soldes|discount|offre|deal)\b#i',
+                $title . ' ' . $content
+            );
 
-            // simple promo detection
-            $lower = strtolower($title . ' ' . $summary);
-            $isPromo = (bool) preg_match('#\b(black ?friday|promotion|soldes|promo|discount|deal|offre)\b#i', $lower);
-
-            return ['category' => $category, 'subcategory' => null, 'is_promo' => $isPromo];
+            return [
+                'category' => $category,
+                'subcategory' => null,
+                'is_promo' => (bool) $isPromo
+            ];
         } catch (\Throwable $e) {
-            $this->logger->warning('Groq AI classify failed, using fallback', [
-                'title' => $title,
-                'summary' => $summary,
-                'exception' => $e->getMessage(),
+            $this->logger->warning('AI classify failed', [
+                'exception' => $e->getMessage()
             ]);
+
             return ['category' => null, 'subcategory' => null, 'is_promo' => false];
         }
+    }
+
+    private function list(array $items): string
+    {
+        return implode(', ', $items);
     }
 }

@@ -181,7 +181,7 @@ body {
     }
 
     svg {
-      fill: #111827;
+      fill: #111827 !important;
     }
   }
 }
@@ -702,6 +702,7 @@ html.dark .navbar .theme-toggle {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  margin-bottom: 1rem;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);

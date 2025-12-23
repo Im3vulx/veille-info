@@ -10,46 +10,29 @@ class CategoryResolverService
 {
     public function __construct(
         private EntityManagerInterface $em,
-        private SluggerInterface $slugger,
+        private SluggerInterface $slugger
     ) {}
 
-    public function resolveCategory(string $categoryName, ?string $subcategoryName = null): Category
-    {
-        // Parent category
-        $category = $this->getOrCreate($categoryName, null);
-
-        // Sub category
-        if ($subcategoryName) {
-            return $this->getOrCreate($subcategoryName, $category);
-        }
-
-        return $category;
-    }
-
-    private function getOrCreate(string $name, ?Category $parent): Category
+    public function resolveCategory(string $name, ?Category $parent = null): Category
     {
         $slug = strtolower($this->slugger->slug($name));
-        $repo = $this->em->getRepository(Category::class);
 
-        $existing = $repo->findOneBy(['slug' => $slug]);
+        $existing = $this->em
+            ->getRepository(Category::class)
+            ->findOneBy(['slug' => $slug]);
+
         if ($existing) {
             return $existing;
         }
 
-        $cat = new Category();
-        $cat->setName($name);
-        $cat->setSlug($slug);
-        $cat->setIconName('default');
-        $cat->setParent($parent);
+        $category = new Category();
+        $category->setName($name);
+        $category->setSlug($slug);
+        $category->setParent($parent);
+        $category->setIconName('default');
 
-        $this->em->persist($cat);
+        $this->em->persist($category);
 
-        return $cat;
-    }
-
-    public function findBySlug(string $slug): ?Category
-    {
-        $repo = $this->em->getRepository(Category::class);
-        return $repo->findOneBy(['slug' => strtolower($slug)]);
+        return $category;
     }
 }
