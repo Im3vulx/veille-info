@@ -1,31 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Articles - Neurogameron
+{% block title %}Résultats pour "{{ searchQuery }}" - Neurogameron
 {% endblock %}
 
 {% block body %}
-	<div class="container">
-		<div class="page-header">
-			<h1>Articles</h1>
-			<p class="page-description">Découvrez nos derniers articles sur la veille technologique</p>
+	<section class="hero-banner mb-5">
+		<div class="container py-5">
+			<h1 class="display-5 fw-bold">Résultats de recherche</h1>
+			<p class="lead">
+				{% if articles|length > 0 %}
+					{{ articles|length }}
+					résultat(s) trouvé(s) pour "<span class="text-primary">{{ searchQuery }}</span>"
+				{% else %}
+					Aucun résultat pour "<span class="text-danger">{{ searchQuery }}</span>"
+				{% endif %}
+			</p>
 		</div>
+	</section>
 
-		<div class="filter-section">
-			<form method="GET" action="{{ path('app_articles') }}" class="filter-form">
-				<div class="filter-group">
-					<label for="categoryFilter" class="filter-label">Filtrer par catégorie :</label>
-					<select name="category" id="categoryFilter" class="filter-select" onchange="this.form.submit()">
-						<option value="">Toutes les catégories</option>
-						{% for category in categories %}
-							<option value="{{ category.id }}" {% if selectedCategory == (category.id ~ '') %} selected {% endif %}>
-								{{ category.name }}
-							</option>
-						{% endfor %}
-					</select>
-				</div>
-			</form>
-		</div>
-
+	<div class="container2">
 		{% if articles is empty %}
 			<div class="empty-state">
 				<div class="empty-icon">
@@ -84,5 +77,4 @@
 			</div>
 		{% endif %}
 	</div>
-	{% include "footer.html.twig" %}
 {% endblock %}

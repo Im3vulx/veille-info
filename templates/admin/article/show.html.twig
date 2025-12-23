@@ -1,0 +1,124 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}Détail :
+	{{ article.title }}
+{% endblock %}
+
+{% block admin_content %}
+	<turbo-frame id="admin-content">
+		<div class="container admin-article-view">
+			<div class="view-header">
+				<div class="breadcrumb">
+					<span class="text-muted">Admin</span>
+					<span class="separator">/</span>
+					<span class="current">Détail article</span>
+				</div>
+
+				<div class="header-actions">
+					<a href="{{ path('app_admin_articles') }}" class="btn-secondary">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<line x1="19" y1="12" x2="5" y2="12"></line>
+							<polyline points="12 19 5 12 12 5"></polyline>
+						</svg>
+						Retour
+					</a>
+
+					<div class="action-group">
+						<a href="{{ path('admin_article_edit', {id: article.id}) }}" class="btn-primary">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+								<path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+							</svg>
+							Modifier
+						</a>
+
+						<form method="post" action="#" onsubmit="return confirm('Supprimer cet article ?');" style="display: inline-block;">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+							<button class="btn-danger">Supprimer</button>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div class="article-grid-layout">
+				<div class="main-content">
+					<div class="content-card">
+						<div class="cover-image-wrapper">
+							{% if article.imageUrl %}
+								<img src="{{ article.imageUrl }}" alt="{{ article.title }}" class="cover-image">
+							{% else %}
+								<div class="no-image-placeholder">
+									<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+										<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+										<circle cx="8.5" cy="8.5" r="1.5"></circle>
+										<polyline points="21 15 16 10 5 21"></polyline>
+									</svg>
+									<span>Aucune image</span>
+								</div>
+							{% endif %}
+
+							<div class="image-overlay">
+								<h1 class="article-title">{{ article.title }}</h1>
+							</div>
+						</div>
+
+						<div class="article-section">
+							<h3>Résumé</h3>
+							<div class="summary-box">
+								{{ article.summary }}
+							</div>
+						</div>
+
+						<div class="article-section">
+							<h3>Contenu</h3>
+							<div class="article-body">
+								{{ article.content|raw }}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="sidebar-info">
+					<div class="info-card">
+						<h3>État</h3>
+						<div class="status-indicator {{ article.published ? 'status-published' : 'status-draft' }}">
+							{% if article.published %}
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+									<polyline points="22 4 12 14.01 9 11.01"></polyline>
+								</svg>
+								Publié
+							{% else %}
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<circle cx="12" cy="12" r="10"></circle>
+									<line x1="12" y1="8" x2="12" y2="12"></line>
+									<line x1="12" y1="16" x2="12.01" y2="16"></line>
+								</svg>
+								Brouillon
+							{% endif %}
+						</div>
+					</div>
+
+					<div class="info-card">
+						<h3>Détails</h3>
+						<ul class="meta-list">
+							<li>
+								<span class="label">Catégorie</span>
+								<span class="badge-category">{{ article.category.name }}</span>
+							</li>
+							<li>
+								<span class="label">Auteur</span>
+								<span class="value">{{ article.authorName }}</span>
+							</li>
+							<li>
+								<span class="label">Créé le</span>
+								<span class="value">{{ article.createdAt|date('d/m/Y') }}</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</turbo-frame>
+{% endblock %}

@@ -3,13 +3,15 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use App\Form\UserType;
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Form\ArticleType;
+use App\Service\SiteSettings;
 use App\Form\AdminSettingsType;
 use App\Repository\UserRepository;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
-use App\Service\SiteSettings;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -161,9 +163,23 @@ final class DashboardAdminController extends AbstractController
     #[Route('/articles/{id}/edit', name: 'admin_article_edit')]
     public function articleEdit(Article $article, Request $request, EntityManagerInterface $em): Response
     {
-        // Logique de formulaire ici...
+        $form = $this->createForm(ArticleType::class, $article);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $article->setUpdatedAt(new \DateTimeImmutable());
+
+            $em->flush();
+
+            $this->addFlash('success', 'L\'article a bien été modifié.');
+
+            return $this->redirectToRoute('admin_article_show', ['id' => $article->getId()]);
+        }
+
         return $this->render('admin/article/edit.html.twig', [
-            'article' => $article
+            'article' => $article,
+            'form' => $form->createView()
         ]);
     }
 
@@ -186,16 +202,30 @@ final class DashboardAdminController extends AbstractController
     }
 
     #[Route('/users/{id}/edit', name: 'admin_user_edit')]
-    public function userEdit(User $user): Response
+    public function userEdit(User $user, Request $request, EntityManagerInterface $em): Response
     {
-        // Logique form...
-        return $this->render('admin/user/edit.html.twig', ['user' => $user]);
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->flush();
+            $this->addFlash('success', 'Utilisateur modifié avec succès.');
+
+            return $this->redirectToRoute('admin_user_show', ['id' => $user->getId()]);
+        }
+
+        return $this->render('admin/user/edit.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
     }
 
     #[Route('/users/{id}', name: 'admin_user_show')]
     public function userShow(User $user): Response
     {
-        return $this->render('admin/user/show.html.twig', ['user' => $user]);
+        return $this->render('admin/user/show.html.twig', [
+            'user' => $user
+        ]);
     }
 
     // --- CATEGORY ACTIONS ---
@@ -206,12 +236,5 @@ final class DashboardAdminController extends AbstractController
         $em->remove($category);
         $em->flush();
         return $this->redirectToRoute('admin_categories');
-    }
-
-    #[Route('/categories/{id}/edit', name: 'admin_category_edit')]
-    public function categoryEdit(Category $category): Response
-    {
-        // Logique form...
-        return $this->render('admin/category/edit.html.twig', ['category' => $category]);
     }
 }

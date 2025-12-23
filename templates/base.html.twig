@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8">
 		<title>
@@ -7,70 +7,74 @@
 			{% endblock %}
 		</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-		<link rel="icon" href="{{ asset('media/logo-bg-trans.png')}}"> 
-		{% block stylesheets %}{% endblock %}
+		<link rel="icon" href="{{ asset('media/logo-bg-trans.png')}}"> {% block stylesheets %}{% endblock %}
 
-		<style>
-			:root {
-				--primary-color: {{ get_setting('primaryColor', '#1e3a8a') }};
-			}
-		</style>
-		{% block javascripts %}
-			{% block importmap %}
-				{{ importmap('app') }}
-			{% endblock %}
+		<style>:root
+		{
+			--primary-color: {{get_setting('primaryColor', '#1e3a8a')}}
+			;
+		}
+	</style>
+	{% block javascripts %}
+		{% block importmap %}
+			{{ importmap('app') }}
 		{% endblock %}
-	</head>
-	<body>
-		<header>
-			<nav class="navbar">
-				<div class="container">
-					<div class="nav-left">
-						<a href="{{ path('app_home') }}" class="logo">Neurogameron</a>
-					</div>
-
-					<div class="nav-center">
-						<a href="{{ path('app_home') }}" class="nav-link">Accueil</a>
-						<a href="{{ path('app_articles') }}" class="nav-link">Articles</a>
-						<a href="{{ path('app_category') }}" class="nav-link">Catégories</a>
-						<button class="icon-button" title="Rechercher">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
-								<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-							</svg>
-						</button>
-						<button class="icon-button theme-toggle" title="Changer le thème" type="button" data-theme-toggle>
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon icon-moon" viewbox="0 0 16 16">
-								<path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
-							</svg>
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high icon-sun" viewbox="0 0 16 16">
-								<path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
-							</svg>
-				</button>
-					</div>
-
-					<div class="nav-right">
-						{% if app.user %}
-							<!-- Utilisateur connecté -->
-							<div class="user-dropdown">
-								<button class="user-button">{{ app.user.username }}
-									▼</button>
-								<div class="dropdown-menu">
-									<a href="{{ path('app_dashboard') }}" class="dropdown-link">Mon profil</a>
-									{% if is_granted('ROLE_ADMIN') %}
-										<a href="{{ path('app_dashboard_admin') }}" class="dropdown-link">Admin Dashboard</a>
-									{% endif %}
-									<a href="{{ path('app_logout') }}" class="dropdown-link">Déconnexion</a>
-								</div>
-							</div>
-						{% else %}
-							<!-- Utilisateur non connecté -->
-							<a href="{{ path('app_login') }}" class="nav-link">Connexion</a>
-							<a href="{{ path('app_registration') }}" class="register-button">Inscription</a>
-						{% endif %}
-					</div>
+	{% endblock %}
+</head>
+<body>
+	<header>
+		<nav class="navbar">
+			<div class="container">
+				<div class="nav-left">
+					<a href="{{ path('app_home') }}" class="logo">Neurogameron</a>
 				</div>
-			</nav>
-		</header>
-		{% block body %}{% endblock %}
-	</body>
-</html>
+
+				<div class="nav-center">
+					<a href="{{ path('app_home') }}" class="nav-link">Accueil</a>
+					<a href="{{ path('app_articles') }}" class="nav-link">Articles</a>
+					<a href="{{ path('app_category') }}" class="nav-link">Catégories</a>
+					<form action="{{ path('app_article_search') }}" method="GET" class="search-form">
+						<div class="search-group">
+							<input type="search" name="q" class="search-input" placeholder="Rechercher un article..." value="{{ app.request.query.get('q') }}" required>
+							<button type="submit" class="icon-button" title="Rechercher">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewbox="0 0 16 16">
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+								</svg>
+							</button>
+						</div>
+					</form>
+					<button class="icon-button theme-toggle" title="Changer le thème" type="button" data-theme-toggle>
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon icon-moon" viewbox="0 0 16 16">
+							<path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
+						</svg>
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high icon-sun" viewbox="0 0 16 16">
+							<path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+						</svg>
+					</button>
+				</div>
+
+				<div class="nav-right">
+					{% if app.user %}
+						<!-- Utilisateur connecté -->
+						<div class="user-dropdown">
+							<button class="user-button">{{ app.user.username }}
+								▼</button>
+							<div class="dropdown-menu">
+								<a href="{{ path('app_dashboard') }}" class="dropdown-link">Mon profil</a>
+								{% if is_granted('ROLE_ADMIN') %}
+									<a href="{{ path('app_dashboard_admin') }}" class="dropdown-link">Admin Dashboard</a>
+								{% endif %}
+								<a href="{{ path('app_logout') }}" class="dropdown-link">Déconnexion</a>
+							</div>
+						</div>
+					{% else %}
+						<!-- Utilisateur non connecté -->
+						<a href="{{ path('app_login') }}" class="nav-link">Connexion</a>
+						<a href="{{ path('app_registration') }}" class="register-button">Inscription</a>
+					{% endif %}
+				</div>
+			</div>
+		</nav>
+	</header>
+	{% block body %}{% endblock %}
+</body></html>

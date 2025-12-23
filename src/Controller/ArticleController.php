@@ -47,4 +47,21 @@ final class ArticleController extends AbstractController
             'article' => $article,
         ]);
     }
+
+    #[Route('/recherche', name: 'app_article_search', methods: ['GET'])]
+    public function search(Request $request, ArticleRepository $articleRepository): Response
+    {
+        $query = $request->query->get('q');
+
+        if ($query) {
+            $articles = $articleRepository->findBySearchQuery($query);
+        } else {
+            $articles = [];
+        }
+
+        return $this->render('article/search.html.twig', [
+            'articles' => $articles,
+            'searchQuery' => $query
+        ]);
+    }
 }

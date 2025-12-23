@@ -1,0 +1,109 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}Modifier :
+	{{ article.title }}
+{% endblock %}
+
+{% block admin_content %}
+	<turbo-frame id="admin-content">
+		<div class="container admin-article-view">
+			<div class="view-header">
+				<div class="breadcrumb">
+					<span class="text-muted">Articles</span>
+					<span class="separator">/</span>
+					<a href="{{ path('admin_article_show', {id: article.id}) }}" class="text-muted">{{ article.title|slice(0, 20) }}...</a>
+					<span class="separator">/</span>
+					<span class="current">Édition</span>
+				</div>
+
+				<div class="header-actions">
+					<a href="{{ path('admin_article_show', {id: article.id}) }}" class="btn-secondary">
+						Annuler
+					</a>
+				</div>
+			</div>
+
+			{{ form_start(form, {'attr': {'class': 'article-form'}}) }}
+
+			<div class="article-grid-layout">
+				<div class="main-content">
+					<div class="content-card" style="padding: 2rem;">
+
+						<div class="form-group mb-4">
+							{{ form_label(form.title, null, {'label_attr': {'class': 'form-label font-bold'}}) }}
+							{{ form_widget(form.title, {'attr': {'class': 'form-control text-lg'}}) }}
+							{{ form_errors(form.title) }}
+						</div>
+
+						<div class="form-group mb-4">
+							{{ form_label(form.imageUrl, null, {'label_attr': {'class': 'form-label'}}) }}
+							{{ form_widget(form.imageUrl, {'attr': {'class': 'form-control'}}) }}
+							<small class="text-muted">Laissez vide si pas d'image.</small>
+							{{ form_errors(form.imageUrl) }}
+						</div>
+
+						<div class="form-group mb-4">
+							{{ form_label(form.summary, null, {'label_attr': {'class': 'form-label'}}) }}
+							{{ form_widget(form.summary, {'attr': {'class': 'form-control', 'style': 'min-height: 100px;'}}) }}
+							{{ form_errors(form.summary) }}
+						</div>
+
+						<div class="form-group">
+							{{ form_label(form.content, null, {'label_attr': {'class': 'form-label'}}) }}
+							{{ form_widget(form.content, {'attr': {'class': 'form-control', 'style': 'min-height: 300px; font-family: monospace;'}}) }}
+							{{ form_errors(form.content) }}
+						</div>
+
+					</div>
+				</div>
+
+				<div class="sidebar-info">
+					<div class="info-card">
+						<h3>Publication</h3>
+
+						<div class="form-group mb-4">
+							<div class="form-check form-switch">
+								{{ form_widget(form.published, {'attr': {'class': 'form-check-input'}}) }}
+								{{ form_label(form.published, null, {'label_attr': {'class': 'form-check-label'}}) }}
+							</div>
+						</div>
+
+						<button type="submit" class="btn-primary w-100 justify-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+								<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+								<polyline points="17 21 17 13 7 13 7 21"></polyline>
+								<polyline points="7 3 7 8 15 8"></polyline>
+							</svg>
+							Enregistrer les modifications
+						</button>
+					</div>
+
+					<div class="info-card">
+						<h3>Classement</h3>
+						<div class="form-group">
+							{{ form_label(form.category, null, {'label_attr': {'class': 'form-label'}}) }}
+							{{ form_widget(form.category, {'attr': {'class': 'form-select'}}) }}
+							{{ form_errors(form.category) }}
+						</div>
+					</div>
+
+					<div class="info-card">
+						<h3>Infos système</h3>
+						<ul class="meta-list">
+							<li>
+								<span class="label">Créé le</span>
+								<span class="value">{{ article.createdAt|date('d/m/Y') }}</span>
+							</li>
+							<li>
+								<span class="label">Auteur</span>
+								<span class="value">{{ article.authorName }}</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			{{ form_end(form) }}
+		</div>
+	</turbo-frame>
+{% endblock %}

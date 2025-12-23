@@ -1,0 +1,81 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block title %}Utilisateur :
+	{{ user.email }}
+{% endblock %}
+
+{% block admin_content %}
+	<turbo-frame id="admin-content">
+		<div class="container admin-article-view">
+			<div class="view-header">
+				<div class="breadcrumb">
+					<span class="text-muted">Utilisateurs</span>
+					<span class="separator">/</span>
+					<span class="current">{{ user.email }}</span>
+				</div>
+				<div class="header-actions">
+					<a href="{{ path('app_admin_users', {'tab': 'users'}) }}" class="btn-secondary">Retour</a>
+
+					<a href="{{ path('admin_user_edit', {id: user.id}) }}" class="btn-primary">Modifier</a>
+				</div>
+			</div>
+
+			<div class="article-grid-layout">
+				<div class="main-content">
+					<div class="content-card" style="padding: 2rem; display: flex; align-items: center; gap: 2rem;">
+						<div style="width: 80px; height: 80px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">
+							{{ user.email|first|upper }}
+						</div>
+						<div>
+							<h1 style="margin: 0; font-size: 1.5rem;">{{ user.email }}</h1>
+							<p class="text-muted" style="margin: 0.5rem 0 0;">ID: #{{ user.id }}</p>
+						</div>
+					</div>
+
+					<div class="content-card" style="margin-top: 2rem; padding: 2rem;">
+						<h3>Données associées</h3>
+						<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+							<div class="info-box" style="text-align: center;">
+								<span style="font-size: 2rem; font-weight: bold; color: var(--accent-color);">{{ user.articles|length }}</span>
+								<p>Articles</p>
+							</div>
+							<div class="info-box" style="text-align: center;">
+								<span style="font-size: 2rem; font-weight: bold; color: var(--accent-color);">{{ user.comments|length }}</span>
+								<p>Commentaires</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="sidebar-info">
+					<div class="info-card">
+						<h3>Accès & Rôles</h3>
+						<div style="margin-bottom: 1rem;">
+							{% for role in user.roles %}
+								<span class="badge-category" style="background-color: {{ role == 'ROLE_ADMIN' ? '#dc2626' : '#3b82f6' }}; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; margin-right: 5px;">
+									{{ role == 'ROLE_ADMIN' ? 'Admin' : 'Utilisateur' }}
+								</span>
+							{% endfor %}
+						</div>
+
+						<hr style="border-color: var(--border-color); margin: 1rem 0;">
+
+						<div class="status-indicator {{ user.isVerified ? 'status-published' : 'status-draft' }}">
+							{{ user.isVerified ? 'Email Vérifié' : 'Non Vérifié' }}
+						</div>
+					</div>
+
+					<div class="info-card">
+						<h3>Historique</h3>
+						<ul class="meta-list">
+							<li>
+								<span class="label">Inscrit le</span>
+								<span class="value">{{ user.createdAt|date('d/m/Y') }}</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</turbo-frame>
+{% endblock %}
